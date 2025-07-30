@@ -1,0 +1,32 @@
+.weather__cards{
+    position: relative;
+}
+
+.weather__card-temp{
+    font-family: Cabinet Grotesk;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 36px;
+    width: 100%;
+    
+   color: white;
+    opacity: 1;
+    margin:0;
+    position: absolute;
+    top: 20px;
+    left: 16px;
+    bottom: 0;
+    line-height: 40px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+
+    
+}
+
+.weather__card-image {
+    object-fit: cover;
+    width: 100%;
+    object-position: right top;
+    
+
+}
