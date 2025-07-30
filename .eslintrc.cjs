@@ -17,6 +17,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+<<<<<<< HEAD
     'react/propt-types': 0,
   },
  overrides: [
@@ -27,3 +28,7 @@ module.exports = {
   ],
 }; 
 
+=======
+  },
+}
+>>>>>>> d5ca56ee96da64024628131f09287f0b47835452
