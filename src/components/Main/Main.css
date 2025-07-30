@@ -1,4 +1,10 @@
 .cards{
+    max-width: 1360;
+    height: 387;
+
+
+
+
 
 }
 .cards__text{
@@ -17,4 +23,28 @@
     letter-spacing: 0%;
 
 
+}
+.cards__list{
+
+    gap: 17px;
+   
+
+}
+.cards__item{
+    
+    
+
+    
+    
+
+}
+.cards__image{
+    width: 328;
+    height: 328;
+
+
+    
+}
+.cards__name{
+    
 }

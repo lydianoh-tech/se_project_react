@@ -1,7 +1,7 @@
-<<<<<<< HEAD
+
 @import url('./vendor/normalize.css');
 
-=======
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -70,4 +70,3 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
->>>>>>> d5ca56ee96da64024628131f09287f0b47835452

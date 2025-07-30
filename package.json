@@ -1,20 +1,10 @@
 {
-<<<<<<< HEAD
-  "name": "hello-vite",
-=======
   "name": "se_project_react",
->>>>>>> d5ca56ee96da64024628131f09287f0b47835452
+  "version": "1.0.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-<<<<<<< HEAD
     "dev": "vite --open",
-=======
-    "dev": "vite",
->>>>>>> d5ca56ee96da64024628131f09287f0b47835452
     "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
