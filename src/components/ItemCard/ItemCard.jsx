@@ -1,9 +1,11 @@
+import React from 'react';
+import './ItemCard.css';
 function ItemCard({ item }) {
     return (
-        <div className="cards__item">
-            <img src={item.link} alt={item.name} className="cards__image" />
-            <p className="cards__name">{item.name}</p>
-            
-        </div>)
+        <li className="card">
+            <h2 className="card__name">{item.name}</h2>
+            <img.card__image src={item.link} alt={item.name} />
+            </li>
+    );
 };
             export default ItemCard;

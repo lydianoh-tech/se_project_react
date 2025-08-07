@@ -4,7 +4,7 @@ import ItemCard from '../ItemCard/ItemCard';
 import React from 'react';
 import './Main.css';
 
-function Main() {
+function Main(weatherData) {
     return (
         <main>
             <WeatherCard />

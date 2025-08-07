@@ -1,0 +1,13 @@
+.card{
+    width:323px;
+    position: relative;
+    display: flex;
+}
+.card__name{
+    position: absolute;
+    top: 15px;
+}
+.card{
+    width: 100%;
+
+}
