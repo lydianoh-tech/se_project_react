@@ -9,9 +9,9 @@ function ModalWithForm(props) {
                 <button
                     type="button"
                     className="modal__close"
-                    onClick={() => props.setIsActiveModal("")}
-                >
-                    CLOSE
+                    onClick={props.closeActiveModal}
+                >Close
+                   
                 </button>
                 <form className="modal__form">
                     {props.children}

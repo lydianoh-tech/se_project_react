@@ -1,13 +1,26 @@
 import "./Header.css";
+import React from 'react';
+import logo from '/src/assets/logo.svg';
+import userAvatar from '/src/assets/Ellipse 18.png'; 
+import { getWeather, filterWeatherData } from '../../utils/weatherApi';   
+
 
   
-function Header(props ) {
+function Header(props) {
+    const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
     return (
         <header className="header">
             <img className="header__logo" src="/src/assets/logo.svg" alt="logo image" />
-            <p className="header__date-and-location">DATE, LOCATION</p>
-            <button onClick={props.handleAddClick} 
-                type="button" className="header__add-clothes-btn">+ Add clothes</button>
+            <p className="header__date-and-location">
+                {currentDate}, {props.weatherData.city}
+            </p>
+            <button
+                onClick={props.handleAddClick}
+                type="button"
+                className="header__add-clothes-btn"
+            >
+                + Add clothes
+            </button>
             <div className="header__search">
                 
             </div>
