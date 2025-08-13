@@ -103,4 +103,4 @@ MIT
 ---
 
 **Live Demo:**  
-https://github.com/lydianoh-tech/se_project_react
+https://lydianoh-tech.github.io/se_project_react/
