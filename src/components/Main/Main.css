@@ -1,55 +1,20 @@
-.cards{
-    max-width: 1360;
-    height: 387;
-
-
-
-
-
+.main {
+ width: 100%;
 }
-.cards__text{
-    width: 330;
-    height: 25;
 
-    opacity: 1;
-    top: 220px;
-    left: 40px;
-    font-family: Cabinet Grotesk;
-    font-weight: 700;
-    font-style: Bold;
-    font-size: 20px;
-
-    line-height: 100%;
-    letter-spacing: 0%;
-
-
+.cards__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  gap: 21px;
 }
-.cards__list{
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 0;
-    list-style: none;
 
-    gap: 21px;
-   
-
-}
-.cards__item{
-    
-    
-
-    
-    
-
-}
-.cards__image{
-    width: 328;
-    height: 328;
-
-
-    
-}
-.cards__name{
-    
+.cards__text {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  font-style: bold;
+  line-height: 1;
 }

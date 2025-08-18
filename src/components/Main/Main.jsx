@@ -6,7 +6,7 @@ import './Main.css';
 
 function Main({ weatherData, handleCardClick }) {
     return (
-        <main>
+        <main className="main">
             <WeatherCard />
             <section className="cards">
                 <p className="cards__text">Today is {weatherData.temp.F}75 &deg; F / You may want to wear:</p>

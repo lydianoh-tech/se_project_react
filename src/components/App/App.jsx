@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { coordinates, APIkey } from '../../utils/constants';
-import { useEffect, useState } from 'react';
-
-import Header from "../Header/Header";
-import Main from "../Main/Main";
-import ModalWithForm from "../ModalWithForm/ModalWithForm"; 
+import './App.css';
+import WeatherCard from '../WeatherCard/WeatherCard';
+import ItemCard from '../ItemCard/ItemCard';
+import Header from '../Header/Header';
+import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import ItemModal from '../ItemModal/ItemModal';
+import Main from "../Main/Main";
 import { getWeather, filterWeatherData } from '../../utils/weatherApi';
 
 
