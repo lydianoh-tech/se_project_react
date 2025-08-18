@@ -7,6 +7,7 @@ import Header from '../Header/Header';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import ItemModal from '../ItemModal/ItemModal';
 import Main from "../Main/Main";
+import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from '../../utils/weatherApi';
 
 
@@ -58,6 +59,7 @@ function App() {
           selectedCard={selectedCard}
          
         />
+        <Footer />
       </div>
 
       {/* Add Garment Modal */}
