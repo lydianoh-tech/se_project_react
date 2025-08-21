@@ -1,33 +1,20 @@
+import sunnyDay from '../assets/day/sunny-day.png';
+import cloudyDay from '../assets/day/cloudy-day.png';
+import moonNight from '../assets/night/moon-night.png';
+import cloudyNight from '../assets/night/cloudy-night.png';
+import defaultDay from '../assets/day/default-day.png';
+import defaultNight from '../assets/night/default-night.png';
+
 export const weatherOptions = [
-  {
-    isDay: true,
-    condition: "clear",
-    url: new URL('../assets/day/sunny-day.png', import.meta.url).href,
-  },
-  {
-    isDay: true,
-    condition: "cloudy",
-    url: new URL('../assets/day/cloudy-day.png', import.meta.url).href,
-  },
-  {
-    isDay: false,
-    condition: "clear",
-    url: new URL('../assets/night/moon-night.png', import.meta.url).href,
-  },
-  {
-    isDay: false,
-    condition: "cloudy",
-    url: new URL('../assets/night/cloudy-night.png', import.meta.url).href,
-  },
+  { isDay: true, condition: "clear", url: sunnyDay },
+  { isDay: true, condition: "cloudy", url: cloudyDay },
+  { isDay: false, condition: "clear", url: moonNight },
+  { isDay: false, condition: "cloudy", url: cloudyNight },
 ];
 
 export const defaultWeatherOptions = {
-  day: {
-    url: new URL('../assets/day/default-day.png', import.meta.url).href,
-  },
-  night: {
-    url: new URL('../assets/night/default-night.png', import.meta.url).href,
-  },
+  day: { url: defaultDay },
+  night: { url: defaultNight },
 };
 
 export const defaultClothingItems = [
@@ -74,4 +61,4 @@ export const coordinates = {
   longitude: -76.945541,
 };
 
-export const APIkey = "44005c5bfa3da23dde7eb1bb15293d10";
+export const  APIkey = "44005c5bfa3da23dde7eb1bb15293d10";

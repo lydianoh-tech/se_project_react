@@ -44,8 +44,7 @@ function App() {
   .catch(console.error);
 },[]);
 
-    
-  
+const timestamp = Date.now();
 
   return (
     <div className="page">
@@ -64,7 +63,7 @@ function App() {
         <Footer />
       </div>
 
-      {/* Add Garment Modal */}
+      
       {isActiveModal === "add-garment" && (
         <ModalWithForm
           title="New Garment"
@@ -76,7 +75,7 @@ function App() {
         >
           <label htmlFor="name" className="modal__label">
             Name
-            <input type="text" className="modal__input" name="name" placeholder="Name" required />
+            <input type="text" className="modal__input" id="name" name="name" placeholder="Name" required />
           </label>
           <label htmlFor="imageurl" className="modal__label">
             Image URL
@@ -100,7 +99,7 @@ function App() {
         </ModalWithForm>
       )}
 
-      {/* Item Preview Modal */}
+      
       {isActiveModal === "preview" && (
         <ItemModal
           isActiveModal={isActiveModal}

@@ -1,16 +1,18 @@
 .modal {
-   position: fixed;
+  position: fixed;
   inset: 0;
   background: none;
   display: flex;
   justify-content: center;
   align-items: center;
   visibility: hidden;
+  z-index: 1000;
+
 }
 
 .modal__opened {
-         
-    visibility: visible;
+  visibility: visible;
+  display: flex;
 }
 
 .modal__content {
