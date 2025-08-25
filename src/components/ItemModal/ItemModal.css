@@ -12,7 +12,7 @@
   visibility: visible;
 }
 
-modal__close-icon {
+.modal__close-icon {
   position: absolute;
   top: 20px;
   right: 28px;

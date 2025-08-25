@@ -16,20 +16,20 @@ import { getWeather, filterWeatherData } from '../../utils/weatherApi';
 function App() {
   const [weatherData, setweatherData] = useState({ type: "", temp: {F:999,C:999}, city:""});
   
-  const [isActiveModal, setIsActiveModal] = React.useState("");
-  const [selectedCard, setSelectedCard] = React.useState({});
+  const [activeModal, setActiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
 
   const handleAddClick = () => {
-    setIsActiveModal("add-garment");
+    setActiveModal("add-garment");
   };
 
   const handleCardClick = (card) => {
-    setIsActiveModal("preview");
+    setActiveModal("preview");
     setSelectedCard(card);
   };
 
   const closeActiveModal = () => {
-    setIsActiveModal("");
+    setActiveModal("");
   };
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -37,16 +37,11 @@ function App() {
     .then((data) => { 
       const filteredData = filterWeatherData(data);
       setweatherData(filteredData);
-      
-
-      
-  })
+    })
   .catch(console.error);
 },[]);
 
-const timestamp = Date.now();
-
-  return (
+return (
     <div className="page">
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
@@ -54,8 +49,12 @@ const timestamp = Date.now();
           weatherData={weatherData}
           setweatherData={setweatherData}
           handleCardClick={handleCardClick}
-          isActiveModal={isActiveModal}
-          setIsActiveModal={setIsActiveModal}
+          isOpen={activeModal === "preview"}
+          setIsOpen={(isOpen) => {
+            if (!isOpen) {
+              closeActiveModal();
+            }
+          }}
           closeActiveModal={closeActiveModal}
           selectedCard={selectedCard}
          
@@ -63,13 +62,12 @@ const timestamp = Date.now();
         <Footer />
       </div>
 
-      
-      {isActiveModal === "add-garment" && (
+      {activeModal === "add-garment" && (
         <ModalWithForm
           title="New Garment"
           buttonText="Add Garment"
-          isActiveModal={isActiveModal === "add-garment"}
-          setIsActiveModal={setIsActiveModal}
+          isOpen={activeModal === "add-garment"}
+          setActiveModal={setActiveModal}
           weatherData={weatherData}
           closeActiveModal={closeActiveModal}
         >
@@ -100,9 +98,9 @@ const timestamp = Date.now();
       )}
 
       
-      {isActiveModal === "preview" && (
+      {activeModal === "preview" && (
         <ItemModal
-          isActiveModal={isActiveModal}
+          isActiveModal={activeModal === "preview"}
           card={selectedCard}
           onClose={closeActiveModal}
         />

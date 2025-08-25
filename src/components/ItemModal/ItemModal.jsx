@@ -2,9 +2,9 @@ import "./ItemModal.css";
 import closeBtn from "../../assets/close-btn.png";
 import React from "react";
 
-function ItemModal({ isActiveModal, onClose, card }) {
+function ItemModal({ isOpen, onClose, card }) {
     return (
-        <div className={`modal ${isActiveModal === "preview" ? "modal__opened" : ""}`}>
+        <div className={`modal ${isOpen ? "modal__opened" : ""}`}>
             <div className="modal__content modal__content_type_image">
                 <button onClick={onClose} type="button" className="modal__close">
                     <img src={closeBtn} alt="Close" className="modal__close-icon" />

@@ -10,7 +10,7 @@ function Header(props) {
     const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
     return (
         <header className="header">
-            <img className="header__logo" src="/src/assets/logo.svg" alt="logo image" />
+            <img src={logo} alt="Logo" />
             <p className="header__date-and-location">
                 {currentDate}, {props.weatherData.city}
             </p>

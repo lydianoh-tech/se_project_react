@@ -72,8 +72,17 @@
   padding: 8px 0 4px;
 }
 
+.modal__close {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  z-index: 1;
+}
+
 .modal__close-icon {
-    position: absolute;
+  position: absolute;
   top: 20px;
   right: 28px;
   height: 16px;
@@ -88,6 +97,9 @@
 }
 .modal__overlay {
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 0;
   left: 0;
   width: 100vw;
