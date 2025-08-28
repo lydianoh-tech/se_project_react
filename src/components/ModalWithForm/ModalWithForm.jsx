@@ -5,14 +5,12 @@ import "./ModalWithForm.css";
 function ModalWithForm({
   title,
   buttonText,
-  isActiveModal,
-  setIsActiveModal,
-  weatherData,
+  isOpen,
   closeActiveModal,
   children,
 }) {
   return (
-    <div className={`modal${isActiveModal ? " modal__opened" : ""}`}>
+    <div className={`modal${isOpen ? " modal__opened" : ""}`}>
       <div className="modal__overlay">
         <div className="modal__content">
           <h2 className="modal__title">{title}</h2>

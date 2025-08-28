@@ -62,7 +62,7 @@ return (
         <Footer />
       </div>
 
-      {activeModal === "add-garment" && (
+      
         <ModalWithForm
           title="New Garment"
           buttonText="Add Garment"
@@ -80,27 +80,51 @@ return (
             <input type="text" className="modal__input" id="imageurl" name="imageurl" placeholder="Image URL" required />
           </label>
           <fieldset className="modal__radio-buttons">
-            <legend className="modal__legend">Select the weather type</legend>
-            <label htmlFor="hot" className="modal__label modal__label-type-radio">
-              <input type="radio" className="modal__radio" id="hot" name="weather-type" value="hot" required />
-              Hot
-            </label>
-            <label htmlFor="warm" className="modal__label modal__label-type-radio">
-              <input type="radio" className="modal__radio" id="warm" name="weather-type" value="warm" required />
-              Warm
-            </label>
-            <label htmlFor="cold" className="modal__label modal__label-type-radio">
-              <input type="radio" className="modal__radio" id="cold" name="weather-type" value="cold" required />
-              Cold
-            </label>
-          </fieldset>
+  <legend className="modal__legend">Select the weather type</legend>
+  <label htmlFor="hot" className="modal__label modal__label_type_radio">
+    <input
+      type="radio"
+      className="modal__radio"
+      id="hot"
+      name="weather-type"
+      value="hot"
+      required
+    />
+    <span className="modal__custom-radio"></span>
+    Hot
+  </label>
+  <label htmlFor="warm" className="modal__label modal__label_type_radio">
+    <input
+      type="radio"
+      className="modal__radio"
+      id="warm"
+      name="weather-type"
+      value="warm"
+      required
+    />
+    <span className="modal__custom-radio"></span>
+    Warm
+  </label>
+  <label htmlFor="cold" className="modal__label modal__label_type_radio">
+    <input
+      type="radio"
+      className="modal__radio"
+      id="cold"
+      name="weather-type"
+      value="cold"
+      required
+    />
+    <span className="modal__custom-radio"></span>
+    Cold
+  </label>
+</fieldset>
         </ModalWithForm>
-      )}
+      
 
       
       {activeModal === "preview" && (
         <ItemModal
-          isActiveModal={activeModal === "preview"}
+          isOpen={activeModal === "preview"}
           card={selectedCard}
           onClose={closeActiveModal}
         />
