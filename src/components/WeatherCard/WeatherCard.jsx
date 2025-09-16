@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import currentTemperatureUnitContext from '../currentTemperatureUnit/currentTemperatureUnit';
 import { defaultWeatherOptions, weatherOptions } from '../../utils/constants';
 import './WeatherCard.css';
 
 function WeatherCard({ weatherData }) {
+  const {currentTemperatureUnit} = useContext(currentTemperatureUnitContext);
+
   if (!weatherData || !weatherData.condition || typeof weatherData.isDay === "undefined") {
     return (
       <section className="weather__cards" style={{ position: "relative" }}>
@@ -22,9 +25,8 @@ function WeatherCard({ weatherData }) {
 
   return (
     <section className="weather__cards" style={{ position: "relative" }}>
-      <p className="weather__card-temp">
-        {weatherData.temp.F}&deg; F
-      </p>
+      <div className="weather__card-temp">{currentTemperatureUnit === "F" ? weatherData.temp.F : weatherData.temp.C}&deg; {currentTemperatureUnit}
+      </div>
       <img
         src={weatherOption.url}
         alt={`${weatherData.isDay ? "Day" : "Night"} ${weatherData.condition}`}

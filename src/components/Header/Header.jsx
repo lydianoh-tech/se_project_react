@@ -30,6 +30,7 @@ function Header(props) {
                 
             </div>
             <img className="header__user-avatar" src="/src/assets/Ellipse 18.png" alt="User Avatar" />
+            
         </header>
     );
 }

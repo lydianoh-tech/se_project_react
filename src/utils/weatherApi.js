@@ -15,7 +15,7 @@ export const getWeather =({latitude, longitude}) => {
   result.city = data.name;
   result.temp = {
     F: Math.round(data.main.temp),
-    C: Math.round((data.main.temp - 32) * 5 / 9)
+    C: Math.round(((data.main.temp - 32) * 5) / 9)
   };
   result.type = getWeatherType(data.main.temp);
   result.icon = data.weather[0].icon;
@@ -39,3 +39,4 @@ const getWeatherType = (temperature) => {
   return 'cold';
 }
     }
+    export default getWeather;
