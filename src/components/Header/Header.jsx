@@ -6,7 +6,7 @@ import currentTemperatureUnitContext from "../currentTemperatureUnit/currentTemp
 import "./Header.css";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
-import logo from '/src/assets/logo.svg';
+import logo from '/src/assets/Logo.svg';
 import userAvatar from '/src/assets/Ellipse 18.png';
 import user__name from '../SideBar/SideBar.jsx';
 
