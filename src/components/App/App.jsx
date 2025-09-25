@@ -15,7 +15,7 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from '../../utils/weatherApi';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
-import currentTemperatureUnitContext from '../currentTemperatureUnit/currentTemperatureUnit';
+import currentTemperatureUnitContext from '../CurrentTemperatureUnit/CurrentTemperatureUnit';
 import useForm from '../../hooks/useForm';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import { defaultClothingItems } from '../../utils/constants';

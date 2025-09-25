@@ -1,4 +1,4 @@
-import currentTemperatureUnitContext from '../currentTemperatureUnit/currentTemperatureUnit';
+import currentTemperatureUnitContext from '../CurrentTemperatureUnit/CurrentTemperatureUnit';
 import WeatherCard from '../WeatherCard/WeatherCard';
 import { defaultClothingItems } from '../../utils/constants';
 import ItemCard from '../ItemCard/ItemCard';

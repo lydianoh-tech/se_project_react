@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import React, { useContext } from "react";
-import currentTemperatureUnitContext from "../currentTemperatureUnit/currentTemperatureUnit";
+import CurrentTemperatureUnitContext from "../CurrentTemperatureUnit/CurrentTemperatureUnit.jsx";
 
 import "./Header.css";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
@@ -14,7 +14,7 @@ import user__name from '../SideBar/SideBar.jsx';
 
 
 function Header(props) {
-    const currentTemperatureUnit = useContext(currentTemperatureUnitContext);
+    const currentTemperatureUnit = useContext(CurrentTemperatureUnitContext);
     const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
     
     const avatar = userAvatar;
