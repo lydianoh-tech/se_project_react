@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import{Route, Routes} from 'react-router';
+
+import{Route, Routes} from 'react-router-dom';
 import { coordinates, APIkey } from '../../utils/constants'; // Use apiKey if that's your export
 import './App.css';
+import Profile from "../Profile/Profile";
+import clothesSection from "../ClothesSection/ClothesSection";
+import sidebar from "../SideBar/SideBar";
 import WeatherCard from '../WeatherCard/WeatherCard';
 import Header from '../Header/Header';
 import AddItemModal from '../AddItemModal/AddItemModal';
@@ -16,6 +19,7 @@ import currentTemperatureUnitContext from '../currentTemperatureUnit/currentTemp
 import useForm from '../../hooks/useForm';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import { defaultClothingItems } from '../../utils/constants';
+import { getItems } from '../../utils/api';
 function App() {
   const [weatherData, setWeatherData] = useState({ 
     type: "", 
@@ -70,18 +74,20 @@ const closeAllModals = () => {
       })
       .catch(console.error);
   }, []);
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch(console.error);
+  }, []);
 
   return (
   <currentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
     <div className="page">
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-        <ToggleSwitch
-          isOn={currentTemperatureUnit === "C"}
-          handleToggle={handleToggleSwitchChange}
-          unit={currentTemperatureUnit}
-          label="Temperature Unit"
-        />
+       
         <Routes>
           <Route path="/" element={
             <Main
@@ -90,7 +96,12 @@ const closeAllModals = () => {
               clothingItems={clothingItems}
             />
           } />
-          <Route path="/profile" element={<p>Profile </p>} />
+          <Route path="/profile" element={<Profile
+    clothingItems={clothingItems}
+    onCardClick={handleCardClick}
+    onAddItemClick={handleAddClick}
+  />
+} />
           <Route path="/weatherData" element={<p>Weather Data</p>} />
           <Route path="/clothesSection" element={<p>Clothing Items</p>} />
 

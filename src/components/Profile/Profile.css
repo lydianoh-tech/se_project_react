@@ -1,0 +1,41 @@
+.profile {
+  display: flex;
+  gap: 100px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+
+.profile__sidebar {
+  flex-direction: column;
+  flex: 325px;
+  height: 56px;
+  top: 119px;
+  left: 40px;
+  border: 1px;
+}
+
+.sidebar__username {
+  width: 200px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+}
+
+
+.profile__clothing-items {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.clothes-section__items {
+  display: flex;
+  flex-wrap: wrap;
+}
+@media screen {
+  
+}

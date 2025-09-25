@@ -1,5 +1,11 @@
 .main {
- width: 100%;
+ width: 1440;
+height: 976;
+top: 260px;
+left: 240px;
+angle: 0 deg;
+opacity: 1;
+
 }
 
 .cards__list {
@@ -18,3 +24,29 @@
   font-style: bold;
   line-height: 1;
 }
+@media screen and (max-width: 480px) {
+  .main {
+    width: 343;
+height: 524;
+gap: 15px;
+angle: 0 deg;
+opacity: 1;
+
+  }
+  .cards__list {
+    width: 343;
+height: 524;
+gap: 15px;
+angle: 0 deg;
+opacity: 1;
+
+  }
+  .cards__text {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+
+
+

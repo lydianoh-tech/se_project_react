@@ -8,18 +8,19 @@ export default function ToggleSwitch(){
     <label className="toggle-switch">
       <input
         type="checkbox"
-        id="toggle"
+        id="toggle-switch"
         className="toggle-checkbox"
         checked={currentTemperatureUnit === 'F'}
         onChange={handleToggleSwitchChange}
       />
 
         <span className="toggle-slider">
-            <span className="toggle-switch-text toggle-switch-text-F">F </span>
+            
+        </span><span className="toggle-switch-text toggle-switch-text-F">F </span>
             <span className="toggle-switch-text toggle-switch-text-C">C</span>
-        </span>
       </label>
    
   );
 }
-export { ToggleSwitch };
+
+

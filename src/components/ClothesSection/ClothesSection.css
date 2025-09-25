@@ -1,0 +1,26 @@
+.clothes-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+.clothes-section__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+@media screen and (max-width: 480px) {
+  .clothes-section {
+    width: 343;
+height: 25;
+justify-content: space-between;
+angle: 0 deg;
+opacity: 1;
+
+    padding: 10px;
+    gap: 15px;
+  }
+  .clothes-section__items {
+    gap: 15px;
+  }
+}

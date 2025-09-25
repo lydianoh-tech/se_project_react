@@ -1,38 +1,66 @@
+
+import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import currentTemperatureUnitContext from "../currentTemperatureUnit/currentTemperatureUnit";
+
 import "./Header.css";
-import React from 'react';
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+
 import logo from '/src/assets/logo.svg';
-import userAvatar from '/src/assets/Ellipse 18.png'; 
-import { getWeather, filterWeatherData } from '../../utils/weatherApi';   
+import userAvatar from '/src/assets/Ellipse 18.png';
+import user__name from '../SideBar/SideBar.jsx';
 
 
-  
+
+
 function Header(props) {
+    const currentTemperatureUnit = useContext(currentTemperatureUnitContext);
     const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
+    
+    const avatar = userAvatar;
+    const avatarDefault = userAvatar;
+
     return (
         <header className="header">
-            <img src={logo} alt="Logo" />
-            <p className="header__date-and-location">
-                {currentDate}, {props.weatherData.city}
-            </p>
-            <button
-                onClick={props.handleAddClick}
-                type="button"
-                className="header__add-clothes-btn"
-            >
-                + Add clothes
-            </button>
-            <div className="header__search">
-                
+            
+                <Link to="/" className="header__logo-link">
+                    <img src={logo} alt="Logo" className="header__logo"/>
+                </Link>
+                <p className="header__date-and-location">
+                    {currentDate}, {props.weatherData.city}
+                </p>
+                <div className="header__elements" >
+            
+            <ToggleSwitch
+                currentTemperatureUnit={currentTemperatureUnit}
+                handleToggleSwitch={props.handleToggleSwitch}
+            />
+            
+                <button
+                    onClick={props.handleAddClick}
+                    type="button"
+                    className="header__add-clothes-btn"
+                >
+                    + Add clothes
+                </button>
+                <Link to="/profile">
+                <p className="header__username">Terrence Tegegne</p></Link>
+
             </div>
-            <div className="header__user-container">
-                
-                <p className="header__user-name">User Name</p>
-                
-            </div>
-            <img className="header__user-avatar" src="/src/assets/Ellipse 18.png" alt="User Avatar" />
+            
+            {avatar ? (
+                <img src={avatar || avatarDefault} alt="User Avatar" className="header__avatar"
+                 />
+                        ) : (
+                            <span className="header__avatar header__avatar-name">
+                                {header__user_name ? header__user_name.charAt(0).toUpperCase() : 'U'}
+                            </span>
+                        )}
+
+
             
         </header>
     );
-}
+};
 
 export default Header;
