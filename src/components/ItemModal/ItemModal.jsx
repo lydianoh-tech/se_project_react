@@ -1,6 +1,6 @@
 import "./ItemModal.css";
 import closeBtn from "../../assets/close-btn.png";
-import React from "react";
+
 
 function ItemModal({ isOpen, onClose, card }) {
     return (
