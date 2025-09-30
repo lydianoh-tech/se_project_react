@@ -1,14 +1,14 @@
 
 import { Link } from "react-router-dom";
 import React, { useContext } from "react";
-import CurrentTemperatureUnitContext from "../CurrentTemperatureUnit/CurrentTemperatureUnit.jsx";
+import CurrentTemperatureUnitContext from "../CurrentTemperatureUnit /CurrentTemperatureUnitContext.jsx";
 
 import "./Header.css";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 import logo from '/src/assets/Logo.svg';
 import userAvatar from '/src/assets/Ellipse 18.png';
-import user__name from '../SideBar/SideBar.jsx';
+
 
 
 
@@ -19,7 +19,7 @@ function Header(props) {
     
     const avatar = userAvatar;
     const avatarDefault = userAvatar;
-
+    const header__user_name = "Henry";
     return (
         <header className="header">
             

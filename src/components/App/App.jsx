@@ -15,7 +15,7 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from '../../utils/weatherApi';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
-import currentTemperatureUnitContext from '../CurrentTemperatureUnit/CurrentTemperatureUnit';
+import currentTemperatureUnitContext from '../../CurrentTemperatureUnitContext/CurrentTemperatureUnitContext';
 import useForm from '../../hooks/useForm';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import { defaultClothingItems } from '../../utils/constants';
@@ -27,13 +27,13 @@ function App() {
     condition: "", 
     isDay: false,
     city: "" });
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
+  const [currentTemperatureUnit, setcurrentTemperatureUnit] = useState('F');
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
 
   const handleToggleSwitchChange = () => {
-    setCurrentTemperatureUnit(currentTemperatureUnit === 'F' ? 'C' : 'F');
+    setcurrentTemperatureUnit(currentTemperatureUnit === 'F' ? 'C' : 'F');
   };
 
   const handleAddClick = () => {
