@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-import{Route, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import { coordinates, APIkey } from '../../utils/constants'; // Use apiKey if that's your export
 import './App.css';
 import Profile from "../Profile/Profile";
-import clothesSection from "../ClothesSection/ClothesSection";
-import sidebar from "../SideBar/SideBar";
+import ClothesSection from "../ClothesSection/ClothesSection";
+import Sidebar from "../SideBar/SideBar";
 import WeatherCard from '../WeatherCard/WeatherCard';
 import Header from '../Header/Header';
 import AddItemModal from '../AddItemModal/AddItemModal';
@@ -45,26 +45,35 @@ function App() {
     setSelectedCard(card);
   };
   const onAddItem = (item) => {
-    const newCardData = {
-      id: Date.now(), 
-      name: item.name,
-      imageUrl: item.imageUrl,
-      weather: item.weatherType,
-    };
-    setClothingItems([...clothingItems, newCardData]);
-    closeAllModals();
-  };
+  const newCardData = {
+  id: Date.now(), 
+  name: item.name,
+  imageUrl: item.imageUrl, 
+  weather: item.weatherType,
+};
+
+
+  postItem(newCardData)
+    .then((savedItem) => {
+      
+      setClothingItems([...clothingItems, savedItem]);
+      closeAllModals();
+    })
+    .catch((error) => {
+      console.error("Failed to save item:", error);
+      
+      const itemWithId = { ...newCardData, id: Date.now() };
+      setClothingItems([...clothingItems, itemWithId]);
+      closeAllModals();
+    });
+};
 
 const closeAllModals = () => {
   setActiveModal("");
 };
-  const handleAddItem = (item) => {
-  console.log("New item added:", item);
-};
-
   const closeActiveModal = () => {
     setActiveModal("");
-  };
+  }
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -75,12 +84,13 @@ const closeAllModals = () => {
       .catch(console.error);
   }, []);
   useEffect(() => {
-    getItems()
-      .then((data) => {
-        console.log(data);
-      })
-      .catch(console.error);
-  }, []);
+  getItems()
+    .then((data) => {
+      console.log(data);
+      setClothingItems(data);  
+    })
+    .catch(console.error);
+}, []);
 
   return (
   <currentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>

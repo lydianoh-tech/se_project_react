@@ -8,12 +8,12 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
   const defaultValues = { 
     name: "", imageUrl: "", weatherType: "" 
   };
-  console.log(defaultValues.imageUrl);
-  const{values, handleChange } = useForm(defaultValues, );
+  
+  const { values, handleChange } = useForm(defaultValues);
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem(values,imageUrl);
+    onAddItem(values)
     onClose(); 
   };
 
@@ -39,7 +39,7 @@ const handleSubmit = (e) => {
         onChange={handleChange}
         required />
       </label>
-      <label htmlFor="imageurl" className="modal__label">
+      <label htmlFor="imageUrl" className="modal__label">
             Image URL
             <input 
             type="text" 
