@@ -1,27 +1,29 @@
 .page {
   background-color: #f3f3f3;
+  min-height: 100vh;
+  background: #f5f6fa;
 }
 
 .page__content {
   max-width: 1360px;
-  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
   margin: 0 auto;
   padding: 0 20px;
-  
 }
 @media screen and (max-width: 375px) {
   .page {
-    background-color:#f3f3f3;
+    background-color: #f3f3f3;
     margin-left: 16px;
     margin-right: 16px;
   }
   .page__content {
-    display: flex
-;
+    display: flex;
     flex-direction: column;
     margin: 45px auto 0;
     min-height: 100vh;
     padding: 0;
   }
-
 }

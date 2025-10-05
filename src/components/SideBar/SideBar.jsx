@@ -1,19 +1,26 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
-import './SideBar.css';
-import avatar from '../../assets/Ellipse 18.png';
-
+import "./SideBar.css";
+import avatar from "../../assets/Ellipse 18.png";
 
 function SideBar() {
+  const user = {
+    link: (
+      <Link to="/">
+        name: "Terrence Tegegne", avatar: "/src/assets/Ellipse 18.png", //
+        Direct path
+      </Link>
+    ),
+  };
+
   return (
     <div className="sidebar">
-      <img className="sidebar__avatar" src={avatar} alt="User Avatar" />
-      <p className="sidebar__username"></p>
-      <nav className="sidebar__nav">
-        <Link className="sidebar__nav-link" to="/">Home</Link>
-        <Link className="sidebar__nav-link" to="/profile">Profile</Link>
-      </nav>
-
+      <div className="sidebar__user">
+        <Link to="/">
+          <img src={user.avatar} alt={user.name} className="sidebar__avatar" />
+          <p className="sidebar__name">{user.name}</p>
+        </Link>
+      </div>
     </div>
   );
 }

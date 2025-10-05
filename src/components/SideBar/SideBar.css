@@ -3,20 +3,27 @@
   flex-direction: column;
   gap: 15px;
   padding: 20px;
-  background-color: #f8f9fa; 
+  background-color: #f8f9fa;
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.sidebar__user-info {
+.sidebar__user {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px; 
+  text-align: center;
+
+  gap: 10px;
 }
 .sidebar__avatar {
-  width: 48px; 
+  width: 48px;
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #007bff; 
+  border: 2px solid #007bff;
 }
 
 .sidebar__username {
@@ -33,23 +40,22 @@
 @media screen and (max-width: 480px) {
   .sidebar {
     width: 343;
-height: 100;
-top: 102px;
-left: 16px;
-gap: 20px;
-angle: 0 deg;
-opacity: 1;
-
+    height: 100;
+    top: 102px;
+    left: 16px;
+    gap: 20px;
+    angle: 0 deg;
+    opacity: 1;
   }
   .sidebar__user-info {
-    gap: 8px; 
+    gap: 8px;
   }
   .sidebar__avatar {
-    width: 40px; 
+    width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #007bff; 
+    border: 2px solid #007bff;
   }
   .sidebar__username {
     font-weight: 500;

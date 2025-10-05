@@ -1,22 +1,30 @@
 import React from "react";
-import './Profile.css'; 
+import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
+import Main from "../Main/Main";
+import App from "../App/App";
 
-function Profile({ onCardClick, clothingItems, onAddClick, }) {
+function Profile({
+  clothingItems,
+  onCardClick,
+  onAddItemClick,
+  onDeleteClick,
+}) {
   return (
     <div className="profile">
-      <section className="profile__sidebar">
+      <div className="profile__sidebar">
         <SideBar />
-      </section>
-      <section className="profile__clothing-items">
+      </div>
+      <div className="profile__content">
+        <App />
         <ClothesSection
-          onCardClick={onCardClick}
-          
           clothingItems={clothingItems}
-          onAddClick={onAddClick}
+          onCardClick={onCardClick}
+          onAddItemClick={onAddItemClick}
+          onDeleteClick={onDeleteClick}
         />
-      </section>
+      </div>
     </div>
   );
 }
