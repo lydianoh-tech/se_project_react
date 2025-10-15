@@ -1,11 +1,10 @@
 .main {
- width: 1440;
-height: 976;
-top: 260px;
-left: 240px;
-angle: 0 deg;
-opacity: 1;
-
+  width: 1440;
+  height: 976;
+  top: 260px;
+  left: 240px;
+  angle: 0 deg;
+  opacity: 1;
 }
 
 .cards__list {
@@ -15,6 +14,7 @@ opacity: 1;
   padding: 0;
   list-style-type: none;
   gap: 21px;
+  height: 680px;
 }
 
 .cards__text {
@@ -27,26 +27,20 @@ opacity: 1;
 @media screen and (max-width: 480px) {
   .main {
     width: 343;
-height: 524;
-gap: 15px;
-angle: 0 deg;
-opacity: 1;
-
+    height: 524;
+    gap: 15px;
+    angle: 0 deg;
+    opacity: 1;
   }
   .cards__list {
     width: 343;
-height: 524;
-gap: 15px;
-angle: 0 deg;
-opacity: 1;
-
+    height: 524;
+    gap: 15px;
+    angle: 0 deg;
+    opacity: 1;
   }
   .cards__text {
     font-size: 16px;
     line-height: 20px;
   }
 }
-
-
-
-

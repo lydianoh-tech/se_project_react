@@ -1,31 +1,40 @@
 import React from "react";
 import "./ItemCard.css";
 
-function ItemCard({ item, onCardClick, onDeleteClick }) {
-  const handleCardClick = () => {
-    onCardClick(item);
-  };
+function ItemCard({ item, onCardClick }) {
+  const [isLiked, setIsLiked] = useLocalStorage(`liked-${item._id}`, false);
 
-  const handleDeleteClick = (e) => {
-    e.stopPropagation(); // Prevent card click when delete is clicked
-    onDeleteClick(item);
+  const handleCardClick = () => {
+    if (onCardClick) onCardClick(item);
+  };
+  const handleLikeClick = (e) => {
+    e.stopPropagation(); // prevent triggering card click
+    setIsLiked((prev) => !prev);
   };
 
   return (
     <li className="card">
-      <h2 className="card__name">{item.name}</h2>
+      <h2 className="weather__cards-text">
+        {item.name}{" "}
+        <button
+          type="checkbox"
+          onClick={handleLikeClick}
+          className="weather__cards-like"
+        >
+          <img
+            src={isLiked ? likedIcon : unlikeIcon}
+            alt={isLiked ? "liked_button" : "unliked_button"}
+            className="weather__cards-liked"
+          />
+        </button>
+      </h2>
+
       <img
         onClick={handleCardClick}
-        className="card__image"
-        src={item.imageUrl}
+        src={item.link}
         alt={item.name}
+        className="weather__images"
       />
-      <button
-        onClick={handleDeleteClick}
-        className="card__delete-btn"
-        type="button"
-        aria-label="Delete item"
-      ></button>
     </li>
   );
 }

@@ -19,16 +19,13 @@ function Main({ weatherData, handleCardClick, clothingItems = [] }) {
           {currentTemperatureUnit} / You may want to wear:
         </p>
         <ul className="cards__list">
-          {clothingItems
-            .filter((item) => item.weather === weatherData.type)
-            .map((item) => (
-              <ItemCard
-                key={item._id || item.id}
-                item={item}
-                onCardClick={onCardClick}
-                onDeleteClick={onDeleteClick}
-              />
-            ))}
+          {clothingItems.map((item) => (
+            <ItemCard
+              key={item._id || item.id}
+              item={item}
+              onCardClick={onCardClick}
+            />
+          ))}
         </ul>
       </section>
     </main>

@@ -3,12 +3,11 @@ import "./ClothesSection.css";
 import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
 import { Link } from "react-router-dom";
-
-export function ClothesSection({
+function ClothesSection({
   clothingItems,
   onCardClick,
   onAddItemClick,
-  onDeleteClick,
+  onDeleteClick = [],
 }) {
   return (
     <section className="clothes-section">
@@ -23,14 +22,16 @@ export function ClothesSection({
         </button>
       </div>
       <ul className="clothes-section__items">
-        {clothingItems.map((item) => (
+        {clothingItems.map((item) => {
           <ItemCard
             key={item._id || item.id}
-            item={item}
+            imageUrl={item.imageUrl || item.link}
+            name={item.name}
             onCardClick={onCardClick}
             onDeleteClick={onDeleteClick}
-          />
-        ))}
+            clothingItems={clothingItems}
+          />;
+        })}
       </ul>
     </section>
   );
