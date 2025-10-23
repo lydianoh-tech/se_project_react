@@ -2,39 +2,51 @@ import React from "react";
 import "./ItemCard.css";
 
 function ItemCard({ item, onCardClick }) {
-  const [isLiked, setIsLiked] = useLocalStorage(`liked-${item._id}`, false);
-
   const handleCardClick = () => {
-    if (onCardClick) onCardClick(item);
+    console.log("Card clicked:", item.name);
+    if (onCardClick) {
+      onCardClick(item);
+    }
   };
+
   const handleLikeClick = (e) => {
-    e.stopPropagation(); // prevent triggering card click
+    e.stopPropagation();
     setIsLiked((prev) => !prev);
+  };
+
+  const handleDeleteClick = (e) => {
+    e.stopPropagation(); // Prevent card click
+    console.log("🗑️ ItemCard delete clicked for:", item.name);
+    if (onDeleteClick) {
+      onDeleteClick(item);
+    }
   };
 
   return (
     <li className="card">
-      <h2 className="weather__cards-text">
+      <h2 className="card__name ">
         {item.name}{" "}
         <button
-          type="checkbox"
+          type="button"
           onClick={handleLikeClick}
-          className="weather__cards-like"
-        >
-          <img
-            src={isLiked ? likedIcon : unlikeIcon}
-            alt={isLiked ? "liked_button" : "unliked_button"}
-            className="weather__cards-liked"
-          />
-        </button>
+          className="card__delete-btn"
+        ></button>
       </h2>
 
       <img
         onClick={handleCardClick}
-        src={item.link}
+        src={item.imageUrl || item.link}
         alt={item.name}
-        className="weather__images"
+        className="card__image"
       />
+
+      <button
+        type="button"
+        onClick={handleDeleteClick}
+        className="card__delete-btn"
+      >
+        🗑️
+      </button>
     </li>
   );
 }

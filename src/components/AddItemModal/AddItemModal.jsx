@@ -30,7 +30,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      isSubmitDisabled={isSubmitDisabled}
+      /* isSubmitDisabled={isSubmitDisabled} */
     >
       {""}
       <label htmlFor="name" className="modal__label">

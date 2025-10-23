@@ -5,10 +5,19 @@ import ItemCard from "../ItemCard/ItemCard";
 import React from "react";
 import "./Main.css";
 
-function Main({ weatherData, handleCardClick, clothingItems = [] }) {
+function Main({
+  weatherData,
+  handleCardClick,
+  clothingItems = [],
+  onDeleteClick,
+  handleAddCardClick,
+}) {
   const { currentTemperatureUnit } = React.useContext(
     currentTemperatureUnitContext
   );
+  const filteredItems = clothingItems.filter((item) => {
+    return item.weather === weatherData?.type;
+  });
 
   return (
     <main className="main">
@@ -19,11 +28,13 @@ function Main({ weatherData, handleCardClick, clothingItems = [] }) {
           {currentTemperatureUnit} / You may want to wear:
         </p>
         <ul className="cards__list">
-          {clothingItems.map((item) => (
+          {filteredItems.map((item) => (
             <ItemCard
               key={item._id || item.id}
               item={item}
-              onCardClick={onCardClick}
+              onCardClick={handleCardClick}
+              onDeleteClick={onDeleteClick}
+              onAddCardClick={handleAddCardClick}
             />
           ))}
         </ul>

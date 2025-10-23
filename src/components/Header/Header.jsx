@@ -28,11 +28,11 @@ function Header(props) {
         <ToggleSwitch />
 
         <button
-          onClick={props.handleAddClick}
-          type="button"
           className="header__add-clothes-btn"
+          type="button"
+          onClick={props.handleAddClick}
         >
-          + Add clothes
+          + Add Clothes
         </button>
         <Link to="/profile">
           <p className="header__username">Terrence Tegegne</p>

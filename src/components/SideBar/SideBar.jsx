@@ -1,27 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import "./SideBar.css";
-import avatar from "../../assets/Ellipse 18.png";
+import Header from "../Header/Header";
+import avatarDefault from "../../assets/Ellipse 18.png";
 
 function SideBar() {
-  const user = {
-    link: (
-      <Link to="/">
-        name: "Terrence Tegegne", avatar: "/src/assets/Ellipse 18.png", //
-        Direct path
-      </Link>
-    ),
-  };
+  const username = "Terrence Tegegne";
+  const avatar = avatarDefault;
 
   return (
-    <div className="sidebar">
-      <div className="sidebar__user">
-        <Link to="/">
-          <img src={user.avatar} alt={user.name} className="sidebar__avatar" />
-          <p className="sidebar__name">{user.name}</p>
-        </Link>
+    <aside className="sidebar">
+      <div className="sidebar__profile">
+        <div className="sidebar__username">{username}</div>
+        {avatar ? (
+          <img src={avatar} alt="User Avatar" className="sidebar__avatar" />
+        ) : (
+          <span className="sidebar__avatar sidebar__avatar-name">
+            {username?.charAt(0).toUpperCase() || ""}
+          </span>
+        )}
       </div>
-    </div>
+    </aside>
   );
 }
+
 export default SideBar;
