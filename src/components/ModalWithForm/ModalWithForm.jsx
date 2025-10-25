@@ -16,11 +16,7 @@ function ModalWithForm({
       <div className="modal__overlay">
         <div className="modal__content">
           <h2 className="modal__title">{title}</h2>
-          <button
-            type="button"
-            className="modal__close"
-            onClick={closeActiveModal}
-          >
+          <button type="button" className="modal__close" onClick={onClose}>
             <img src={closeBtn} alt="Close" className="modal__close-icon" />
           </button>
           <form onSubmit={onSubmit} className="modal__form">

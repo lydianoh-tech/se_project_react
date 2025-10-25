@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { defaultClothingItems } from "../../utils/constants";
-import { Route, Routes } from "react-router-dom";
-import { coordinates, APIkey } from "../../utils/constants";
-import "./App.css";
-import Profile from "../Profile/Profile";
+import { Routes, Route } from "react-router-dom";
 import Header from "../Header/Header";
+import Main from "../Main/Main";
+import Profile from "../Profile/Profile";
+import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import EditProfile from "../EditProfile/EditProfile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import ItemModal from "../ItemModal/ItemModal";
-import Main from "../Main/Main";
-import Footer from "../Footer/Footer";
+import { getItems, postItem, deleteItem } from "../../utils/api";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import currentTemperatureUnitContext from "../../CurrentTemperatureUnitContext/CurrentTemperatureUnitContext";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import EditProfile from "../EditProfile/EditProfile";
+import {
+  coordinates,
+  APIkey,
+  defaultClothingItems,
+} from "../../utils/constants";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -27,78 +29,89 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
-  const [itemToDelete, setItemToDelete] = useState(null); // Move this outside onAddItem
+  const [itemToDelete, setItemToDelete] = useState(null);
   const [currentUser, setCurrentUser] = useState({
     name: "Terrence Tegegne",
     avatar: "https://via.placeholder.com/80x80/cccccc/ffffff?text=TT",
   });
 
-  // Handler functions
+  // Toggle temperature unit
   const handleToggleSwitchChange = () => {
     setcurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
+  // Open Add Garment modal
   const handleAddClick = () => {
     setActiveModal("add-garment");
-    console.log("🆕 App handleAddClick function called!");
-    console.log("🆕 Current activeModal:", activeModal);
   };
 
+  // Open Delete Confirmation modal
   const handleDeleteClick = (item) => {
-    console.log("Delete clicked for item:", item);
     setActiveModal("delete-confirmation");
     setItemToDelete(item);
   };
 
+  // Confirm deletion and update server
   const handleConfirmDelete = () => {
     if (itemToDelete) {
-      setClothingItems(
-        clothingItems.filter((item) => item._id !== itemToDelete._id)
-      );
-      closeAllModals();
+      deleteItem(itemToDelete._id)
+        .then(() => {
+          setClothingItems((prevItems) =>
+            prevItems.filter((item) => item._id !== itemToDelete._id)
+          );
+          closeAllModals();
+        })
+        .catch((error) => {
+          console.error("Error deleting item:", error);
+        });
     }
   };
 
+  // Open preview modal
   const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
   };
 
+  // Add item and persist to server
   const onAddItem = (item) => {
     const newCardData = {
-      _id: Date.now().toString(), // Use _id instead of id
       name: item.name,
       imageUrl: item.imageUrl,
       weather: item.weatherType,
     };
-    setClothingItems([...clothingItems, newCardData]);
-    closeAllModals();
+
+    postItem(newCardData)
+      .then((addedItem) => {
+        console.log("Item successfully added to server:", addedItem);
+        setClothingItems([addedItem, ...clothingItems]);
+        closeAllModals();
+      })
+      .catch((error) => {
+        console.error("Error adding item:", error);
+      });
   };
 
-  const handleDeleteItem = (item) => {
-    // Use local state instead of API call for now
-    setClothingItems((prevItems) =>
-      prevItems.filter((prevItem) => prevItem._id !== item._id)
-    );
-    closeActiveModal();
-  };
-
+  // Close all modals
   const closeAllModals = () => {
     setActiveModal("");
     setItemToDelete(null);
     setSelectedCard({});
   };
 
+  // Close current modal
   const closeActiveModal = () => {
     setActiveModal("");
     setItemToDelete(null);
     setSelectedCard({});
   };
 
+  // Open Edit Profile modal
   const handleProfileData = () => {
     setActiveModal("edit_profile");
   };
 
+  // Update user profile
   const handleUpdateUser = ({ name, avatar }) => {
     const updatedUser = {
       ...currentUser,
@@ -110,22 +123,29 @@ function App() {
     return Promise.resolve(updatedUser);
   };
 
-  // useEffect hooks
+  // Fetch clothing items from server
   useEffect(() => {
-    console.log("Setting default clothing items");
-    setClothingItems(defaultClothingItems);
+    getItems()
+      .then((items) => {
+        console.log("Items fetched:", items);
+
+        setClothingItems(items);
+      })
+      .catch((error) => {
+        console.log("Error fetching items:", error);
+        setClothingItems(defaultClothingItems);
+      });
   }, []);
 
+  // Fetch weather data
   useEffect(() => {
-    console.log("Setting up weather data");
     getWeather(coordinates, APIkey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
       })
       .catch((error) => {
-        console.error("Weather API error:", error);
-        // Set mock weather data as fallback
+        console.log("Weather API error:", error);
         setWeatherData({
           type: "hot",
           temp: { F: 75, C: 24 },
@@ -151,7 +171,6 @@ function App() {
             handleUpdateUser={handleUpdateUser}
             handleProfileData={handleProfileData}
           />
-
           <Routes>
             <Route
               path="/"
@@ -172,13 +191,12 @@ function App() {
                   currentUser={currentUser}
                   onUpdateUser={handleUpdateUser}
                   onCardClick={handleCardClick}
-                  onAddItemClick={handleAddClick} // Make sure this is passed
+                  onAddItemClick={handleAddClick}
                   onDeleteClick={handleDeleteClick}
                 />
               }
             />
           </Routes>
-
           <Footer />
         </div>
       </div>

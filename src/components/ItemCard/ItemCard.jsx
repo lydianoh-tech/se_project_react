@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+
 import "./ItemCard.css";
 
-function ItemCard({ item, onCardClick }) {
+function ItemCard({ item, onCardClick, onDeleteClick }) {
+  const [isLiked, setIsLiked] = useState(false);
+
   const handleCardClick = () => {
     console.log("Card clicked:", item.name);
     if (onCardClick) {
@@ -16,7 +19,7 @@ function ItemCard({ item, onCardClick }) {
 
   const handleDeleteClick = (e) => {
     e.stopPropagation(); // Prevent card click
-    console.log("🗑️ ItemCard delete clicked for:", item.name);
+
     if (onDeleteClick) {
       onDeleteClick(item);
     }
@@ -29,8 +32,10 @@ function ItemCard({ item, onCardClick }) {
         <button
           type="button"
           onClick={handleLikeClick}
-          className="card__delete-btn"
-        ></button>
+          className="card__like-btn"
+        >
+          {isLiked ? "❤️" : "🤍"}
+        </button>
       </h2>
 
       <img
@@ -45,7 +50,7 @@ function ItemCard({ item, onCardClick }) {
         onClick={handleDeleteClick}
         className="card__delete-btn"
       >
-        🗑️
+        Delete Item
       </button>
     </li>
   );

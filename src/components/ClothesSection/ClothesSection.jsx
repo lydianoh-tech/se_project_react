@@ -1,6 +1,6 @@
 import React from "react";
 import "./ClothesSection.css";
-import { defaultClothingItems } from "../../utils/constants";
+
 import ItemCard from "../ItemCard/ItemCard";
 import { Link } from "react-router-dom";
 

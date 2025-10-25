@@ -1,41 +1,36 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl = "http://localhost:3000";
 
-// Get all items
-export const getItems = () => {
-  return fetch(`${baseUrl}/items`).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  });
-};
+function checkResponse(res) {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Error: ${res.status}`);
+}
 
-// Add new item
-export const postItem = (item) => {
+function getItems() {
+  return fetch(`${baseUrl}/items`).then(checkResponse);
+}
+
+function postItem(item) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(item),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  });
-};
+  }).then(checkResponse);
+}
 
-export const deleteItem = (id) => {
+function deleteItem(id) {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  });
-};
+  }).then(checkResponse);
+}
+
+function getWeatherData(coordinates) {
+  return fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&units=imperial&appid=${APIkey}`
+  ).then(checkResponse);
+}
+
+export { getItems, postItem, deleteItem, getWeatherData };

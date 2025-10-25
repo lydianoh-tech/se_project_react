@@ -29,7 +29,11 @@
   object-fit: cover;
   display: block;
 }
-
+.card__like-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
 .card__image:hover {
   cursor: pointer;
   opacity: 0.8;
