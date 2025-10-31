@@ -7,22 +7,26 @@ function Profile({
   onCardClick,
   onAddItemClick,
   onDeleteClick,
+  handleCardClick,
+  handleAddClick,
   currentUser,
   onUpdateUser,
 }) {
   return (
     <div className="profile">
-      <section className="profile__sidebar">
+      <div className="profile__sidebar">
         <SideBar currentUser={currentUser} onUpdateUser={onUpdateUser} />
-      </section>
-      <section className="profile__main-content">
+      </div>
+      <div className="profile__main-content">
         <ClothesSection
           clothingItems={clothingItems}
           onCardClick={onCardClick}
           onAddItemClick={onAddItemClick}
           onDeleteClick={onDeleteClick}
+          handleCardClick={handleCardClick}
+          handleAddClick={handleAddClick}
         />
-      </section>
+      </div>
     </div>
   );
 }

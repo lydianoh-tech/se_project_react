@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
+import "./App.css";
 import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import EditProfile from "../EditProfile/EditProfile";
@@ -25,6 +26,7 @@ function App() {
     isDay: false,
     city: "",
   });
+
   const [currentTemperatureUnit, setcurrentTemperatureUnit] = useState("F");
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});

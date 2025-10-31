@@ -30,9 +30,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      /* isSubmitDisabled={isSubmitDisabled} */
     >
-      {""}
       <label htmlFor="name" className="modal__label">
         Name
         <input
@@ -106,7 +104,6 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           Cold
         </label>
       </fieldset>
-      {""}
     </ModalWithForm>
   );
 };

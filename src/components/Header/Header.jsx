@@ -18,7 +18,7 @@ function Header(props) {
 
   return (
     <header className="header">
-      <Link to="/" className="header__logo-link">
+      <Link to="/l" className="header__logo-link">
         <img src={logo} alt="Logo" className="header__logo" />
       </Link>
       <p className="header__date-and-location">

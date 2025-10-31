@@ -1,77 +1,81 @@
-.toggle-switch {
-    width: 56px;
-  height: 26px;
+.toggle__switch {
+  width: 56px;
+  height: 28px;
   border: 2px solid black;
   border-radius: 20px;
-  margin-right: 20px;
-  
-  position: relative;
-  
+  cursor: pointer;
+  margin-left: 602px;
 
-    
+  overflow: hidden;
+  position: relative;
 }
 .toggle-checkbox {
- opacity: 0;
-   
+  cursor: pointer;
+  opacity: 0;
 }
-.toggle-slider{
-    position: absolute;
-  top: -1px;
-  left: -1px;
+.toggle-slider-circle {
+  background-color: black;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  border-radius: 50%;
+  left: 0;
 
-    background-color: black;
-    width: 28px;
-    height: 28px;
-    position: absolute;
-    border-radius: 50%;
-    left: 0;
-    transition: all 0.2s ;
-    
-
+  transition: all 0.2s;
 }
-.toggle-switch-text{
-    position: absolute;
-  color: grey;
+.toggle-switch-text {
+  color: gray;
+  position: absolute;
   top: 5px;
-    
-    width: 28px;
-    height: 28px;
-    left: 28px;
-    angle: 0deg;
-    opacity: 1;
-
-    color:gray;
-    position: absolute;
-    top: 5px;
-    font-family: Cabinet Grotesk;
-    font-weight: 700;
-    font-style: Bold;
-    font-size: 14px;
-    leading-trim: NONE;
-    line-height: 100%;
-    letter-spacing: 0%;
-    text-align: center;
-    vertical-align: middle;
-
-
-
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 14px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
 }
-.toggle-switch-text-F{
-    left: 8px;
+.toggle-switch-text-F {
+  left: 8px;
+  width: 28;
+  height: 28;
+  angle: 0 deg;
+  opacity: 1;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 14px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
 }
-.toggle-switch-text-C{
-
-    right: 8px;
+.toggle-switch-text-C {
+  right: 8px;
+  width: 28;
+  height: 28;
+  angle: 0 deg;
+  opacity: 1;
+  left: 28px;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 14px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
 }
-.toggle-checkbox:checked ~ .toggle-slider {
-    left: 50%;
-
+.toggle-checkbox:checked ~ .toggle-slider-circle {
+  left: 50%;
 }
 .toggle-checkbox:not(:checked) ~ .toggle-switch-text-F {
-    
-    color: white;
+  color: white;
 }
 .toggle-checkbox:checked ~ .toggle-switch-text-C {
-
-    color: white;
+  color: white;
 }

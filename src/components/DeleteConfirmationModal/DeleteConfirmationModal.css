@@ -1,52 +1,99 @@
-.modal__content_type_confirmation {
-    max-width: 400px;
-    padding: 32px;
-    text-align: center;
-}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 670;
 
-.modal__confirmation-title {
-    margin: 0 0 16px;
-    font-size: 20px;
-    font-weight: 700;
-    color: #000;
+  top: 271px;
+  left: 385px;
+  angle: 0 deg;
+  opacity: 1;
+
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
 .modal__confirmation-text {
-    margin: 0 0 32px;
-    font-size: 16px;
-    color: #666;
+  width: 367;
+  height: 48;
+  angle: 0 deg;
+  opacity: 1;
+  top: 331px;
+  left: 536px;
+  color: #000;
+  background-color: white;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 .modal__confirmation-buttons {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
+  display: block;
+  gap: 16px;
+  justify-content: center;
 }
 
 .modal__btn {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    min-width: 120px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  min-width: 120px;
 }
 
 .modal__btn_type_delete {
-    background: #d32f2f;
-    color: white;
+  width: 138;
+  height: 24;
+  angle: 0 deg;
+  opacity: 1;
+  top: 419px;
+  left: 651px;
+  margin-left: 266px;
+  margin-right: 266px;
+
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0%;
+
+  color: #ff4d00;
+  background-color: white;
 }
 
 .modal__btn_type_delete:hover {
-    background: #b71c1c;
+  background: gray;
 }
 
 .modal__btn_type_cancel {
-    background: #f5f5f5;
-    color: #333;
-    border: 1px solid #ddd;
+  width: 61;
+  height: 24;
+  angle: 0 deg;
+  opacity: 1;
+  top: 467px;
+  left: 689px;
+  background-color: white;
+  align-items: center;
+
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: #000;
 }
 
 .modal__btn_type_cancel:hover {
-    background: #e0e0e0;
+  background: #e0e0e0;
 }

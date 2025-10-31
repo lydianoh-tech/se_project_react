@@ -1,48 +1,51 @@
-.clothes-section {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-  background: #fff;
-  border-radius: 12px;
-  padding: 32px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-.clothes-section__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 32px;
+.clothes__section-header {
 }
 
-.clothes-section__title {
-  font-size: 20px;
+.clothes__section-title {
+  width: 94;
+  height: 25;
+  angle: 0 deg;
+  opacity: 1;
+  top: 135px;
+  left: 385px;
+  font-family: Cabinet Grotesk;
   font-weight: 700;
-  color: #000;
-  margin: 0;
+  font-style: Bold;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
 }
 
-.clothes-section__add-btn {
-  background: transparent;
-  border: none;
-  font-size: 16px;
-  font-weight: 500;
-  color: #0066cc;
+.clothes__section-add-btn {
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #00000027;
+  width: 88px;
+  height: 25px;
+  angle: 0deg;
+  opacity: 1;
+  top: 135px;
+  left: 499px;
   cursor: pointer;
-  padding: 8px 16px;
-  border-radius: 6px;
-  transition: background 0.3s ease;
 }
-.clothes-section__add-btn:hover {
+.clothes__section-add-btn:hover {
   background: #f0f8ff;
+  cursor: pointer;
+  opacity: 0.8;
 }
-.clothes-section__items {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.clothes__section-items {
+  width: 1015;
+  height: 676;
+  angle: 0 deg;
+  opacity: 1;
+  top: 176px;
+  left: 385px;
 }
 @media screen and (max-width: 480px) {
   .clothes-section {
@@ -57,72 +60,5 @@
   }
   .clothes-section__items {
     gap: 15px;
-  }
-}
-.clothes-section {
-  padding: 20px 0;
-}
-
-.clothes-section__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 34px;
-}
-
-.clothes-section__title {
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  color: rgba(0, 0, 0, 1);
-  margin: 0;
-}
-
-.clothes-section__add-btn {
-  background: transparent;
-  border: none;
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  color: rgba(0, 0, 0, 1);
-  cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.clothes-section__add-btn:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-/* Match the Main component card layout */
-.clothes-section__items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Same spacing as Main */
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  justify-content: flex-start;
-}
-
-/* Ensure cards have proper spacing */
-.clothes-section__items .card {
-  flex: 0 0 auto;
-  margin: 0; /* Remove any margin since we're using gap */
-}
-
-@media screen and (max-width: 768px) {
-  .clothes-section__items {
-    gap: 16px;
-    justify-content: center;
-  }
-
-  .clothes-section__header {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
   }
 }
