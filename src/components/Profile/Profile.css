@@ -1,63 +1,22 @@
 .profile {
   display: flex;
-  justify-content: space-between;
-  width: 1440px;
+  gap: 117px;
+
   height: 976px;
 
   background: #f3f3f3;
 }
 
 .profile__main-content {
-  width: 1015;
-  height: 676;
-  angle: 0 deg;
+  width: 1015px;
+  display: flex;
+  flex-direction: column;
+  height: 676px;
+  angle: 0deg;
   opacity: 1;
   top: 176px;
-  left: 385px;
-  margin-left: 117px;
 }
 
-.card__image {
-  width: 325px;
-  height: 240px;
-  angle: 0deg;
-  opacity: 1;
-
-  object-fit: cover;
-}
-.card__name {
-  width: 297px;
-  height: 24px;
-  top: 432px;
-  left: 410px;
-  angle: 0deg;
-  opacity: 1;
-
-  margin: 8px 0 0 14px;
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  color: #000;
-}
-.card__delete-btn {
-  width: 98.12px;
-  height: 13.62px;
-  top: 628.6px;
-  left: 837.32px;
-  angle: 0deg;
-  opacity: 1;
-
-  background: transparent;
-  border: none;
-  font-size: 16px;
-  font-weight: 500;
-  color: #ff0000;
-  cursor: pointer;
-  padding: 8px 16px;
-  border-radius: 6px;
-  transition: background 0.3s ease;
-}
 @media screen and (max-width: 768px) {
   .profile {
     flex-direction: column;

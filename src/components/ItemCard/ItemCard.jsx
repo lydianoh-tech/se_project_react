@@ -2,21 +2,13 @@ import React, { useState } from "react";
 
 import "./ItemCard.css";
 
-function ItemCard({ item, onCardClick, onDeleteClick }) {
-  const [isLiked, setIsLiked] = useState(false);
-
+function ItemCard({ item, onCardClick }) {
   const handleCardClick = () => {
     console.log("Card clicked:", item.name);
     if (onCardClick) {
       onCardClick(item);
     }
   };
-
-  const handleLikeClick = (e) => {
-    e.stopPropagation();
-    setIsLiked((prev) => !prev);
-  };
-
   const handleDeleteClick = (e) => {
     e.stopPropagation(); // Prevent card click
 
@@ -27,31 +19,14 @@ function ItemCard({ item, onCardClick, onDeleteClick }) {
 
   return (
     <li className="card">
-      <h2 className="card__name ">
-        {item.name}{" "}
-        <button
-          type="button"
-          onClick={handleLikeClick}
-          className="card__like-btn"
-        >
-          {isLiked ? "❤️" : "🤍"}
-        </button>
-      </h2>
+      <h2 className="card__name">{item.name}</h2>
 
       <img
-        onClick={handleCardClick}
+        onCardClick={handleCardClick}
         src={item.imageUrl || item.link}
         alt={item.name}
         className="card__image"
       />
-
-      <button
-        type="button"
-        onClick={handleDeleteClick}
-        className="card__delete-btn"
-      >
-        Delete Item
-      </button>
     </li>
   );
 }

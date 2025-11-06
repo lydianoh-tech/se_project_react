@@ -1,67 +1,36 @@
-.sidebar {
+.sidebar__profile-info {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 20px;
-  background-color: #f8f9fa;
-  background: #fff;
-  border-radius: 12px;
-  padding: 32px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  width: 229;
-  height: 56;
-  angle: 0 deg;
-  opacity: 1;
-  top: 119px;
-  left: 40px;
-  border-width: 1px;
+  flex-direction: row-reverse;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
 }
 .sidebar__profile {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  text-align: center;
-  gap: 20px;
+  gap: 24px;
 }
 
 .sidebar__username {
-  width: 157;
-  height: 25;
-  angle: 0 deg;
-  opacity: 1;
-  top: 135px;
-  left: 112px;
+  width: max-content;
+
   font-family: Cabinet Grotesk;
   color: #000;
   font-weight: 700;
   font-style: Bold;
   font-size: 20px;
-  leading-trim: NONE;
+
   line-height: 100%;
   letter-spacing: 0%;
 }
 .sidebar__avatar {
-  object-fit: cover;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  width: 56;
-  height: 56;
-  angle: 0 deg;
-  opacity: 1;
-  top: 119px;
-  left: 40px;
-  border-width: 1px;
+  object-fit: cover;
 }
 
-.sidebar__avatar:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-.sidebar__nav {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
-}
 @media screen and (max-width: 480px) {
   .sidebar {
     width: 343;

@@ -6,8 +6,9 @@ import Profile from "../Profile/Profile";
 import "./App.css";
 import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import EditProfile from "../EditProfile/EditProfile";
+
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
+
 import ItemModal from "../ItemModal/ItemModal";
 import { getItems, postItem, deleteItem } from "../../utils/api";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
@@ -26,16 +27,11 @@ function App() {
     isDay: false,
     city: "",
   });
-
+  const [itemToDelete, setItemToDelete] = useState(null);
   const [currentTemperatureUnit, setcurrentTemperatureUnit] = useState("F");
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
-  const [itemToDelete, setItemToDelete] = useState(null);
-  const [currentUser, setCurrentUser] = useState({
-    name: "Terrence Tegegne",
-    avatar: "https://via.placeholder.com/80x80/cccccc/ffffff?text=TT",
-  });
 
   // Toggle temperature unit
   const handleToggleSwitchChange = () => {
@@ -45,6 +41,7 @@ function App() {
   // Open Add Garment modal
   const handleAddClick = () => {
     setActiveModal("add-garment");
+    console.log("Getting close to opening the addItemModal");
   };
 
   // Open Delete Confirmation modal
@@ -76,56 +73,28 @@ function App() {
   };
 
   // Add item and persist to server
-  const onAddItem = (item) => {
+  const onAddItem = (inputValues) => {
     const newCardData = {
-      name: item.name,
-      imageUrl: item.imageUrl,
-      weather: item.weatherType,
+      name: inputValues.name,
+      imageUrl: inputValues.imageUrl,
+      weather: inputValues.weatherType,
     };
 
     postItem(newCardData)
       .then((addedItem) => {
         console.log("Item successfully added to server:", addedItem);
         setClothingItems([addedItem, ...clothingItems]);
-        closeAllModals();
+        closeActiveModal();
       })
       .catch((error) => {
         console.error("Error adding item:", error);
       });
   };
 
-  // Close all modals
-  const closeAllModals = () => {
-    setActiveModal("");
-    setItemToDelete(null);
-    setSelectedCard({});
-  };
-
-  // Close current modal
   const closeActiveModal = () => {
     setActiveModal("");
-    setItemToDelete(null);
-    setSelectedCard({});
   };
 
-  // Open Edit Profile modal
-  const handleProfileData = () => {
-    setActiveModal("edit_profile");
-  };
-
-  // Update user profile
-  const handleUpdateUser = ({ name, avatar }) => {
-    const updatedUser = {
-      ...currentUser,
-      name: name || currentUser.name,
-      avatar: avatar || currentUser.avatar,
-    };
-    setCurrentUser(updatedUser);
-    closeAllModals();
-    return Promise.resolve(updatedUser);
-  };
-
-  // Fetch clothing items from server
   useEffect(() => {
     getItems()
       .then((items) => {
@@ -170,8 +139,6 @@ function App() {
             weatherData={weatherData}
             activeModal={activeModal}
             setActiveModal={setActiveModal}
-            handleUpdateUser={handleUpdateUser}
-            handleProfileData={handleProfileData}
           />
           <Routes>
             <Route
@@ -181,6 +148,7 @@ function App() {
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  onCardClick={handleCardClick}
                   onDeleteClick={handleDeleteClick}
                 />
               }
@@ -190,51 +158,32 @@ function App() {
               element={
                 <Profile
                   clothingItems={clothingItems}
-                  currentUser={currentUser}
-                  onUpdateUser={handleUpdateUser}
-                  onCardClick={handleCardClick}
+                  handleCardClick={handleCardClick}
                   onAddItemClick={handleAddClick}
-                  onDeleteClick={handleDeleteClick}
+                  currentUser={{ name: "Terrence Tegegne", avatar: "" }}
+                  handleAddClick={handleAddClick}
+                  onCardClick={handleCardClick}
                 />
               }
             />
           </Routes>
           <Footer />
         </div>
-      </div>
-
-      <AddItemModal
-        title="New garment"
-        name="new-card"
-        isOpen={activeModal === "add-garment"}
-        onAddItem={onAddItem}
-        onClose={closeActiveModal}
-        handleAddClick={handleAddClick}
-      />
-
-      <EditProfile
-        activeModal={activeModal}
-        isOpen={activeModal === "edit_profile"}
-        onClose={closeActiveModal}
-        onUpdateUser={handleUpdateUser}
-        currentUser={currentUser}
-      />
-
-      <DeleteConfirmationModal
-        isOpen={activeModal === "delete-confirmation"}
-        onClose={closeAllModals}
-        onConfirm={handleConfirmDelete}
-        itemName={itemToDelete?.name}
-      />
-
-      {activeModal === "preview" && (
-        <ItemModal
-          isOpen={activeModal === "preview"}
-          card={selectedCard}
+        <AddItemModal
           onClose={closeActiveModal}
-          onDeleteClick={handleDeleteClick}
+          isOpen={activeModal === "add-garment"}
+          onAddItem={onAddItem}
         />
-      )}
+
+        {activeModal === "preview" && (
+          <ItemModal
+            isOpen={activeModal === "preview"}
+            card={selectedCard}
+            onClose={closeActiveModal}
+            onDeleteClick={handleDeleteClick}
+          />
+        )}
+      </div>
     </currentTemperatureUnitContext.Provider>
   );
 }

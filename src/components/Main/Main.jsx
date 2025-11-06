@@ -8,9 +8,8 @@ import "./Main.css";
 function Main({
   weatherData,
   handleCardClick,
-  clothingItems = [],
-  onDeleteClick,
-  handleAddCardClick,
+  clothingItems,
+  handleDeleteClick,
 }) {
   const { currentTemperatureUnit } = React.useContext(
     currentTemperatureUnitContext
@@ -33,8 +32,7 @@ function Main({
               key={item._id || item.id}
               item={item}
               onCardClick={handleCardClick}
-              onDeleteClick={onDeleteClick}
-              onAddCardClick={handleAddCardClick}
+              onDeleteClick={handleDeleteClick}
             />
           ))}
         </ul>

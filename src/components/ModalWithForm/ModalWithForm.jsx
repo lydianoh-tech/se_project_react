@@ -12,21 +12,23 @@ function ModalWithForm({
   onSubmit,
 }) {
   return (
-    <div className={`modal${isOpen ? "modal__opened" : ""}`}>
-      <div className="modal__overlay">
-        <div className="modal__content">
-          <h2 className="modal__title">{title}</h2>
-          <button type="button" className="modal__close" onClick={onClose}>
-            <img src={closeBtn} alt="Close" className="modal__close-icon" />
-          </button>
-          <form onSubmit={onSubmit} className="modal__form">
-            {children}
+    <div className={`modal ${isOpen ? "modal__opened" : ""}`}>
+      <div className="modal__content">
+        <h2 className="modal__title">{title}</h2>
+        <button
+          type="button"
+          onClick={onClose}
+          className="modal__close-icon"
+        ></button>
+        <form onSubmit={onSubmit} className="modal__form">
+          {children}
+          <div className="submit__btn-frame">
             <button type="submit" className="modal__submit-btn">
               Add Garment
               {buttonText}
             </button>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   );

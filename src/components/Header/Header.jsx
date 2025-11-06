@@ -34,7 +34,7 @@ function Header(props) {
         >
           + Add Clothes
         </button>
-        <Link to="/profile">
+        <Link className="header__nav-link" to="/profile">
           <p className="header__username">Terrence Tegegne</p>
         </Link>
       </div>

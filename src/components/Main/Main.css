@@ -7,23 +7,22 @@
   opacity: 1;
 }
 
+.cards__text {
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
 .cards__list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(323px, 1fr));
+  grid-template-columns: repeat(auto-fit, 283px);
+  grid-template-rows: repeat(auto-fit, 283px);
   justify-content: center;
   margin: 0;
   padding: 0;
   list-style-type: none;
-  gap: 21px;
-  height: 680px;
-}
-
-.cards__text {
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  font-style: bold;
-  line-height: 1;
+  grid-gap: 20px 17px;
 }
 @media screen and (max-width: 480px) {
   .main {

@@ -1,99 +1,39 @@
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 670;
-
-  top: 271px;
-  left: 385px;
-  angle: 0 deg;
-  opacity: 1;
-
-  align-items: center;
+.modal__content_delete {
+  position: absolute;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  z-index: 1000;
+  align-items: center;
+  height: 280px;
+  width: 670px;
+  border-radius: 8px;
 }
 
-.modal__confirmation-text {
-  width: 367;
-  height: 48;
-  angle: 0 deg;
-  opacity: 1;
-  top: 331px;
-  left: 536px;
-  color: #000;
-  background-color: white;
-  font-family: Cabinet Grotesk;
-  font-weight: 700;
-  font-style: Bold;
-  font-size: 20px;
-  leading-trim: NONE;
-  line-height: 24px;
-  letter-spacing: 0%;
+.delete__text {
+  color: #000000;
+  max-width: 80%;
   text-align: center;
-}
-
-.modal__confirmation-buttons {
-  display: block;
-  gap: 16px;
-  justify-content: center;
-}
-
-.modal__btn {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  min-width: 120px;
-}
-
-.modal__btn_type_delete {
-  width: 138;
-  height: 24;
-  angle: 0 deg;
-  opacity: 1;
-  top: 419px;
-  left: 651px;
-  margin-left: 266px;
-  margin-right: 266px;
-
-  font-family: Cabinet Grotesk;
-  font-weight: 700;
-  font-style: Bold;
+  padding-bottom: 20px;
   font-size: 20px;
-  leading-trim: NONE;
-  line-height: 24px;
-  letter-spacing: 0%;
+  line-height: 1.2;
+}
 
+.delete__confirm-btn {
   color: #ff4d00;
-  background-color: white;
-}
-
-.modal__btn_type_delete:hover {
-  background: gray;
-}
-
-.modal__btn_type_cancel {
-  width: 61;
-  height: 24;
-  angle: 0 deg;
-  opacity: 1;
-  top: 467px;
-  left: 689px;
-  background-color: white;
-  align-items: center;
-
-  font-family: Cabinet Grotesk;
-  font-weight: 700;
-  font-style: Bold;
+  padding-bottom: 24px;
+  border: none;
+  background-color: transparent;
   font-size: 20px;
-  leading-trim: NONE;
-  line-height: 24px;
-  letter-spacing: 0%;
-  color: #000;
+  line-height: 1.2;
+  cursor: pointer;
 }
 
-.modal__btn_type_cancel:hover {
-  background: #e0e0e0;
+.delete__cancel-btn {
+  color: #000000;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  line-height: 1.2;
+  cursor: pointer;
 }

@@ -1,4 +1,6 @@
-const baseUrl = "http://localhost:3000";
+import { APIkey } from "./constants.js";
+
+const baseUrl = "http://localhost:3001";
 
 function checkResponse(res) {
   if (res.ok) {

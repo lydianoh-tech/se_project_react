@@ -3,29 +3,21 @@ import ItemCard from "../ItemCard/ItemCard";
 import closeBtn from "../../assets/close-btn.png";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function ItemModal({ isOpen, onClose, card, onDeleteClick }) {
+function ItemModal({ activeModal, isOpen, onClose, card, onDeleteClick }) {
   if (!isOpen || !card) return null;
 
   const handleDelete = () => {
-    console.log("🗑️ ItemModal delete button clicked for:", card);
-    // Close the ItemModal first
-    onClose();
-    // Then trigger the delete confirmation modal
-    if (onDeleteClick) {
-      onDeleteClick(card);
-    }
+    onDeleteClick(card);
   };
   return (
-    <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
-      <div className="modal__content modal__content_type_image">
+    <div className={`modal ${activeModal === "preview" && "modal__opened"}`}>
+      <div className="item__modal-content modal__content_type_image">
         <button
           onClick={onClose}
           type="button"
-          className="modal__close"
+          className="modal__close-icon"
           aria-label="Close modal"
-        >
-          ✕
-        </button>
+        ></button>
 
         <img src={card.link} alt={card.name} className="modal__image" />
 

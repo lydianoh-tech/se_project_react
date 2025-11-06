@@ -1,5 +1,18 @@
 .page {
   background-color: #f3f3f3;
+  font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.page__content {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.page {
+  background-color: #f3f3f3;
   min-height: 100vh;
   background: #f5f6fa;
   width: 1440;
@@ -17,18 +30,4 @@
 
   margin: 0 auto;
   padding: 0 20px;
-}
-@media screen and (max-width: 375px) {
-  .page {
-    background-color: #f3f3f3;
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-  .page__content {
-    display: flex;
-    flex-direction: column;
-    margin: 45px auto 0;
-    min-height: 100vh;
-    padding: 0;
-  }
 }

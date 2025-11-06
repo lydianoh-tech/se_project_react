@@ -6,17 +6,18 @@ function ClothesSection({
   handleAddClick,
   handleCardClick,
   clothingItems,
+  onCardClick,
 
-  onDeleteClick = [],
+  onDeleteClick,
 }) {
   return (
-    <section>
-      <div className="clothes__section-header">
-        <h2 className="clothes__section-title">Your Items</h2>
+    <div className="clothes__section">
+      <div className="clothes__section-main">
+        <p className="clothes__section-title">Your items</p>
         <button
-          className="clothes__section-add-btn"
-          type="button"
           onClick={handleAddClick}
+          type="button"
+          className="clothes__section-add-btn"
         >
           + Add new
         </button>
@@ -25,15 +26,15 @@ function ClothesSection({
         {clothingItems.map((item) => {
           return (
             <ItemCard
-              key={item._id || item.id}
+              key={item._id}
               item={item}
-              handleCardClick={handleCardClick}
+              onCardClick={handleCardClick}
               onDeleteClick={onDeleteClick}
             />
           );
         })}
       </ul>
-    </section>
+    </div>
   );
 }
 
