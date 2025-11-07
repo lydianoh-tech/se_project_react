@@ -24,7 +24,7 @@ function Profile({
         <ClothesSection
           className="profile__clothes-section"
           clothingItems={clothingItems}
-          handleCardClick={handleCardClick}
+          onCardClick={onCardClick}
           handleAddClick={handleAddClick}
           onDeleteClick={handleDeleteClick}
         />

@@ -7,10 +7,6 @@
   left: 385px;
 }
 
-.modal__opened {
-  visibility: visible;
-  opacity: 1;
-}
 .item__modal-content {
   width: 670;
   height: 368;

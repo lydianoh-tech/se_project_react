@@ -1,16 +1,13 @@
 import "./ItemModal.css";
-import ItemCard from "../ItemCard/ItemCard";
-import closeBtn from "../../assets/close-btn.png";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function ItemModal({ activeModal, isOpen, onClose, card, onDeleteClick }) {
+function ItemModal({ isOpen, onClose, card, onDeleteClick }) {
   if (!isOpen || !card) return null;
 
   const handleDelete = () => {
     onDeleteClick(card);
   };
   return (
-    <div className={`modal ${activeModal === "preview" && "modal__opened"}`}>
+    <div className={`modal ${isOpen === "preview" && "modal__opened"}`}>
       <div className="item__modal-content modal__content_type_image">
         <button
           onClick={onClose}
@@ -19,7 +16,11 @@ function ItemModal({ activeModal, isOpen, onClose, card, onDeleteClick }) {
           aria-label="Close modal"
         ></button>
 
-        <img src={card.link} alt={card.name} className="modal__image" />
+        <img
+          src={card.imageUrl || card.link}
+          alt={card.name}
+          className="modal__image"
+        />
 
         <div className="modal__footer">
           <div className="modal__item-info">
@@ -28,8 +29,10 @@ function ItemModal({ activeModal, isOpen, onClose, card, onDeleteClick }) {
           </div>
 
           <button
-            onClick={handleDelete}
-            type="button"
+            onClick={() => {
+              onDeleteClick(card);
+            }}
+            type="submit"
             className="modal__delete-btn"
           >
             Delete item
@@ -41,3 +44,7 @@ function ItemModal({ activeModal, isOpen, onClose, card, onDeleteClick }) {
 }
 
 export default ItemModal;
+/* Please Reviewer i have tried everything to make this modal work 
+but it still not working properly. The modal does not open when i click . 
+Please help me to fix this issue. 
+Thank you! */

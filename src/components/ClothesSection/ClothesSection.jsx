@@ -1,13 +1,12 @@
+import React from "react";
+import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 
-import ItemCard from "../ItemCard/ItemCard";
-
 function ClothesSection({
-  handleAddClick,
-  handleCardClick,
   clothingItems,
   onCardClick,
-
+  handleAddClick,
+  onAddItemClick,
   onDeleteClick,
 }) {
   return (
@@ -22,17 +21,16 @@ function ClothesSection({
           + Add new
         </button>
       </div>
+
       <ul className="clothes__section-items">
-        {clothingItems.map((item) => {
-          return (
-            <ItemCard
-              key={item._id}
-              item={item}
-              onCardClick={handleCardClick}
-              onDeleteClick={onDeleteClick}
-            />
-          );
-        })}
+        {clothingItems.map((item) => (
+          <ItemCard
+            key={item.id || item._id || item.name} // Add unique key
+            item={item}
+            onCardClick={onCardClick}
+            onDeleteClick={onDeleteClick}
+          />
+        ))}
       </ul>
     </div>
   );

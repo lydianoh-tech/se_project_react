@@ -1,10 +1,10 @@
 .header {
   width: 100%;
 
-  height: 40;
+  height: 40px;
   position: relative;
+  justify-content: space-between;
 
-  angle: 0 deg;
   opacity: 1;
 
   display: flex;
@@ -40,10 +40,11 @@
   gap: 20px;
   width: 369;
   height: 28;
-  angle: 0 deg;
+
   opacity: 1;
   top: 6px;
   left: 939px;
+  margin-left: auto;
 }
 
 .header__add-clothes-btn {
@@ -99,15 +100,15 @@
 }
 
 .header__logo {
-  width: 89;
-  height: 40;
-  angle: 0 deg;
+  width: 89px;
+  height: 40px;
+
   opacity: 1;
   font-family: Cabinet Grotesk;
   font-weight: 900;
   font-style: Black;
   font-size: 32px;
-  leading-trim: NONE;
+
   line-height: 100%;
   letter-spacing: 0%;
 
@@ -118,18 +119,30 @@
 }
 @media screen and (max-width: 480px) {
   .header {
-    margin-left: 16px;
-    margin-right: 16px;
-
+    margin: 16px;
+    margin-bottom: 0;
     max-height: 56px;
     border-bottom: 1px solid #545454;
-    margin-bottom: 0;
   }
+
   .header__logo {
     width: 126px;
     height: 24px;
-    padding: 0;
-    margin-left: 27px;
-    margin-bottom: 32px;
+    font-size: 24px;
+  }
+
+  .header__date-and-location {
+    font-size: 16px;
+    margin-left: 12px;
+  }
+
+  .header__add-clothes-btn,
+  .header__username {
+    font-size: 16px;
+  }
+
+  .header__avatar {
+    width: 32px;
+    height: 32px;
   }
 }
