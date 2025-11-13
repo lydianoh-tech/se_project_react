@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "./ItemCard.css";
 
 function ItemCard({ item, onCardClick }) {
-  const handleCardClick = () => {
+  const handleCardClick = (item) => {
     onCardClick(item);
   };
 
@@ -12,7 +12,7 @@ function ItemCard({ item, onCardClick }) {
       <h2 className="card__name">{item.name}</h2>
 
       <img
-        onClick={handleCardClick}
+        onClick={(event) => handleCardClick(item)}
         className="card__image"
         src={item.imageUrl || item.link}
         alt={item.name}

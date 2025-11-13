@@ -25,7 +25,7 @@ function DeleteConfirmationModal({
         <button
           onClick={onClose}
           type="button"
-          className="modal__close"
+          className="modal__close-icon"
           aria-label="Close modal"
         >
           ✕

@@ -9,10 +9,11 @@
   justify-content: center;
   align-items: center;
   visibility: hidden;
-  opacity: 0;
+
   transition: opacity 0.3s ease;
   z-index: 1000;
 }
+
 .modal__opened {
   visibility: visible;
 }
@@ -22,11 +23,14 @@
   background-color: white;
   border-radius: 8px;
   padding: 20px;
-  max-width: 400px;
-  width: 90%;
   position: relative;
-  max-height: 80vh;
+
   overflow-y: auto;
+}
+.modal__content_type_form {
+  width: 496px;
+  height: 436px;
+  opacity: 1;
 }
 
 /* Confirmation modal specific styles */
@@ -83,10 +87,12 @@
 
 .modal__close-icon {
   background-image: url("../../assets/close-btn.png");
-
+  background-repeat: no-repeat;
+  color: #000;
   background-size: contain;
   width: 20px;
   height: 20px;
+  background-color: transparent;
   position: absolute;
   top: 20px;
   right: 28px;
@@ -95,6 +101,7 @@
   cursor: pointer;
   z-index: 1;
 }
+
 .modal__close-icon:hover {
   cursor: pointer;
   color: #000000;
@@ -107,7 +114,7 @@
 .modal__radio-buttons {
   top: 417px;
   left: 500px;
-  angle: 0deg;
+  border: none;
   opacity: 1;
 
   display: block;
@@ -142,7 +149,7 @@
   height: 16px;
   top: 507px;
   left: 500px;
-  angle: 0 deg;
+
   opacity: 1;
 
   color: #000;
@@ -214,7 +221,7 @@
 .modal__legend {
   top: 417px;
   left: 500px;
-  angle: 0deg;
+
   opacity: 1;
   margin-bottom: 12px;
 }

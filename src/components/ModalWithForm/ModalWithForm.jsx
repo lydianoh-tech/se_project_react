@@ -4,6 +4,7 @@ import "./ModalWithForm.css";
 
 function ModalWithForm({
   title,
+  name,
   buttonText,
 
   isOpen,
@@ -13,7 +14,7 @@ function ModalWithForm({
 }) {
   return (
     <div className={`modal ${isOpen ? "modal__opened" : ""}`}>
-      <div className="modal__content">
+      <div className="modal__content modal__content_type_form">
         <h2 className="modal__title">{title}</h2>
         <button
           type="button"

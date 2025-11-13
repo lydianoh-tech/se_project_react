@@ -186,6 +186,7 @@ function App() {
                   clothingItems={clothingItems}
                   currentUser={currentUser}
                   onCardClick={handleCardClick}
+                  handleAddClick={handleAddClick}
                   onDeleteClick={handleDeleteClick}
                 />
               }

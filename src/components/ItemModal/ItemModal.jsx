@@ -1,38 +1,28 @@
 import "./ItemModal.css";
+import React from "react";
 
 function ItemModal({ isOpen, onClose, card, onDeleteClick }) {
-  if (!isOpen || !card) return null;
-
-  const handleDelete = () => {
-    onDeleteClick(card);
-  };
+  console.log("12312313123");
+  console.log(card);
   return (
-    <div className={`modal ${isOpen === "preview" && "modal__opened"}`}>
-      <div className="item__modal-content modal__content_type_image">
+    <div className={`modal ${isOpen ? "modal__opened" : ""}`}>
+      <div className="modal__content modal__content_type_image">
         <button
           onClick={onClose}
           type="button"
-          className="modal__close-icon"
-          aria-label="Close modal"
+          className="modal__close-icon modal__close-icon_type_image"
         ></button>
 
-        <img
-          src={card.imageUrl || card.link}
-          alt={card.name}
-          className="modal__image"
-        />
+        <img src={card.link} alt={card.name} className="modal__image" />
 
         <div className="modal__footer">
-          <div className="modal__item-info">
+          <div>
             <h2 className="modal__caption">{card.name}</h2>
             <p className="modal__weather">Weather: {card.weather}</p>
           </div>
-
           <button
-            onClick={() => {
-              onDeleteClick(card);
-            }}
-            type="submit"
+            onClick={() => onDeleteClick(card)}
+            type="button"
             className="modal__delete-btn"
           >
             Delete item
@@ -44,7 +34,3 @@ function ItemModal({ isOpen, onClose, card, onDeleteClick }) {
 }
 
 export default ItemModal;
-/* Please Reviewer i have tried everything to make this modal work 
-but it still not working properly. The modal does not open when i click . 
-Please help me to fix this issue. 
-Thank you! */

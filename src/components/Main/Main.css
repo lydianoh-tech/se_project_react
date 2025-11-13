@@ -1,10 +1,9 @@
 .main {
+  width: 100%;
   width: 1440;
   height: 976;
   top: 260px;
   left: 240px;
-  angle: 0 deg;
-  opacity: 1;
 }
 
 .cards__text {
@@ -16,20 +15,19 @@
 
 .cards__list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 283px);
-  grid-template-rows: repeat(auto-fit, 283px);
   justify-content: center;
-  margin: 0;
+  grid-template-columns: repeat(auto-fit, 323px);
+  gap: 20px;
   padding: 0;
-  list-style-type: none;
-  grid-gap: 20px 17px;
+  margin: 0;
+  list-style: none;
 }
 @media screen and (max-width: 480px) {
   .main {
     width: 343;
     height: 524;
     gap: 15px;
-    angle: 0 deg;
+
     opacity: 1;
   }
   .cards__list {

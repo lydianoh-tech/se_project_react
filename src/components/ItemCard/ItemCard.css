@@ -29,3 +29,18 @@
   line-height: 20px;
   letter-spacing: 0%;
 }
+@media (max-width: 600px) {
+  .card {
+    width: 100%;
+    height: auto;
+  }
+
+  .card__image {
+    height: auto;
+  }
+
+  .card__name {
+    font-size: 14px;
+    padding: 2px 8px;
+  }
+}
