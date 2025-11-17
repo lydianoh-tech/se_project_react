@@ -1,33 +1,19 @@
-import { useState } from 'react';
+import { useState, useCallback } from "react";
 
-export const useForm = (initialValues, onSubmit) => {
-  const [values, setValues] = useState(initialValues);
-  const [errors, setErrors] = useState({});
+export function useForm(defaultValues) {
+  const [values, setValues] = useState(defaultValues);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const validate = () => {
-    const newErrors = {};
-    // Add validation logic here
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  const resetForm = useCallback(() => {
+    setValues(defaultValues);
+  }, [defaultValues]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validate()) {
-      onSubmit(values);
-    }
-  };
-
-  return {
-    values,
-    errors,
-    handleChange,
-    handleSubmit,
-  };
-};
-export default useForm;
+  return { values, handleChange, resetForm };
+}

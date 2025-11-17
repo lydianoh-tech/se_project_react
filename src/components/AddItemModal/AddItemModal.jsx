@@ -1,32 +1,34 @@
 import "./AddItemModal.css";
+import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState, useEffect } from "react";
-import useForm from "../../hooks/useForm";
+import { useEffect } from "react";
+
+const defaultValues = {
+  name: "",
+  link: "",
+  weatherType: "",
+};
 
 const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
-  const [name, setName] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [weather, setWeather] = useState("");
-  const defaultValues = { name: "", imageUrl: "", weatherType: "" };
-  const { values, handleChange } = useForm(defaultValues);
-  const [setValues] = useState(defaultValues);
+  const { values, handleChange, resetForm } = useForm(defaultValues);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onAddItem(values);
-    onClose();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onAddItem({
+      name: values.name,
+      imageUrl: values.link,
+      weather: values.weatherType,
+    });
   };
-  useEffect(() => {
-    setName("");
-    setImageUrl("");
-    setWeather("");
-  }, [isOpen]);
 
-  const isSubmitDisabled = !name.trim() || !imageUrl.trim() || !weather;
+  useEffect(() => {
+    if (!isOpen) {
+      resetForm();
+    }
+  }, [isOpen, resetForm]);
   return (
     <ModalWithForm
       title="New garment"
-      name="new-card"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}

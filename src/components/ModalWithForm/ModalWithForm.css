@@ -34,14 +34,6 @@
 }
 
 /* Confirmation modal specific styles */
-.modal__content_type_confirmation {
-  background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  max-width: 400px;
-  width: 90%;
-  position: relative;
-}
 
 .modal__title {
   margin-bottom: 24px;

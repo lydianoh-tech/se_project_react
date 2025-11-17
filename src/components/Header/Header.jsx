@@ -14,7 +14,7 @@ function Header(props) {
 
   const avatar = userAvatar;
   const avatarDefault = userAvatar;
-  const header__user_name = "Henry";
+  const header__user_name = "Lydia";
 
   return (
     <header className="header">

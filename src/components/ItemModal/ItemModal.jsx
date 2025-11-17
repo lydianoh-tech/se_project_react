@@ -11,7 +11,10 @@ function ItemModal({ isOpen, onClose, card, onDeleteClick }) {
           onClick={onClose}
           type="button"
           className="modal__close-icon modal__close-icon_type_image"
-        ></button>
+        >
+          {" "}
+          ✕{" "}
+        </button>
 
         <img src={card.link} alt={card.name} className="modal__image" />
 

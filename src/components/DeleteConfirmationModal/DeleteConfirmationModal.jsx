@@ -32,23 +32,21 @@ function DeleteConfirmationModal({
         </button>
 
         <p className="modal__confirmation-text">
-          Are you sure you want to delete "{itemName}"?
+          Are you sure you want to delete
           <br />
           This action cannot be undone.
         </p>
-
-        <div className="modal__confirmation-buttons">
+        <div className="modal__buttons-container">
           <button
-            className="modal__btn modal__btn_type_delete"
+            className="modal__delete-affirmation-btn"
             type="button"
-            onClick={onConfirm} // Fixed: use onConfirm instead of undefined function
-            disabled={isLoading}
+            onClick={onConfirm}
           >
-            {isLoading ? "Deleting..." : "Yes, delete item"}
+            Yes, delete item
           </button>
 
           <button
-            className="modal__btn modal__btn_type_cancel"
+            className="modal__btn_type_cancel"
             type="button"
             onClick={onClose}
             disabled={isLoading}
