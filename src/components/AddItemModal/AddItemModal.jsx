@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const defaultValues = {
   name: "",
-  link: "",
+  imageUrl: "",
   weatherType: "",
 };
 
@@ -16,7 +16,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
     event.preventDefault();
     onAddItem({
       name: values.name,
-      imageUrl: values.link,
+      imageUrl: values.imageUrl,
       weather: values.weatherType,
     });
   };
@@ -51,7 +51,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
       <label htmlFor="imageUrl" className="modal__label">
         Image URL
         <input
-          type="text"
+          type=" url"
           className="modal__input modal__input_type_card-url"
           id="imageUrl"
           name="imageUrl"

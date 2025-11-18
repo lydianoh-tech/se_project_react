@@ -16,7 +16,11 @@ function ItemModal({ isOpen, onClose, card, onDeleteClick }) {
           ✕{" "}
         </button>
 
-        <img src={card.link} alt={card.name} className="modal__image" />
+        <img
+          src={card.imageUrl || card.link}
+          alt={card.name}
+          className="modal__image"
+        />
 
         <div className="modal__footer">
           <div>
