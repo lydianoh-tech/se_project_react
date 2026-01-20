@@ -106,6 +106,6 @@ MIT
 **Live Demo:**  
 https://lydianoh-tech.github.io/se_project_react/
 youtube link: https://youtu.be/yhwex8fRMw0
-https://github.com/lydianoh-tech/Full-stack-/tree/main/se_project_react
+Frontend: https://github.com/lydianoh-tech/se_project_react
 
 Backend: https://github.com/lydianoh-tech/se_project_express
