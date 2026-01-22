@@ -4,7 +4,6 @@ import ClothesSection from "../ClothesSection/ClothesSection";
 
 function Profile({
   clothingItems,
-  currentUser,
   onCardClick,
   handleAddClick,
   onDeleteClick,
@@ -17,7 +16,6 @@ function Profile({
       <div className="profile__sidebar">
         <SideBar
           className="sidebar__profile-info"
-          currentUser={currentUser}
           onEditProfile={onEditProfile}
           onSignOut={onSignOut}
         />

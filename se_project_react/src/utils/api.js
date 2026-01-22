@@ -52,15 +52,6 @@ function signup(name, avatar, email, password) {
     body: JSON.stringify({ name, avatar, email, password }),
   }).then(checkResponse);
 }
-function signin(email, password) {
-  return fetch(`${baseUrl}/signin`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password }),
-  }).then(checkResponse);
-}
 
 function getUserData(token) {
   return fetch(`${baseUrl}/users/me`, {
@@ -105,7 +96,7 @@ function removeCardLike(itemId, token) {
 
 function getWeatherData(coordinates) {
   return fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&units=imperial&appid=${APIkey}`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&units=imperial&appid=${APIkey}`,
   ).then(checkResponse);
 }
 
@@ -115,7 +106,6 @@ export {
   deleteItem,
   getWeatherData,
   signup,
-  signin,
   updateUser,
   getUserData,
   authHeaders,

@@ -41,8 +41,6 @@ function App() {
   const [itemToDelete, setItemToDelete] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isRegisterOpen, setRegisterOpen] = useState(false);
-  const [isLoginOpen, setLoginOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
 
@@ -101,7 +99,7 @@ function App() {
           .addCardLike(id, token)
           .then((updatedCard) => {
             safeSetClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) => (item._id === id ? updatedCard : item)),
             );
           })
           .catch((err) => console.log(err))
@@ -111,7 +109,7 @@ function App() {
           .removeCardLike(id, token)
           .then((updatedCard) => {
             safeSetClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) => (item._id === id ? updatedCard : item)),
             );
           })
           .catch((err) => console.log(err));
@@ -141,12 +139,10 @@ function App() {
   };
 
   const handleSignIn = () => {
-    setLoginOpen(true);
     setActiveModal("signin");
   };
 
   const handleSignUp = () => {
-    setRegisterOpen(true);
     setActiveModal("signup");
   };
 
@@ -183,7 +179,7 @@ function App() {
     deleteItem(itemId, localStorage.getItem("jwt"))
       .then(() => {
         safeSetClothingItems((items) =>
-          items.filter((item) => (item.id || item._id) !== itemId)
+          items.filter((item) => (item.id || item._id) !== itemId),
         );
         closeActiveModal();
       })
@@ -196,53 +192,50 @@ function App() {
       });
   };
   const handleRegister = (data) => {
+    setIsLoading(true);
     register(data)
+      .then(() => {
+        // Auto-login after successful registration
+        return login({ email: data.email, password: data.password });
+      })
       .then((res) => {
-        closeActiveModal();
-        setActiveModal("signin");
-        setLoginOpen(true);
-        setRegisterOpen(false);
+        if (res && res.token) {
+          return handleAuthLogin(res.token);
+        } else {
+          throw new Error("Token missing after login");
+        }
       })
       .catch((err) => {
         console.error("Registration error:", err);
-        // Try to get more detailed error information
-        if (err.json) {
-          err
-            .json()
-            .then((errorData) => {
-              alert(
-                errorData.message || "Registration failed. Please try again."
-              );
-            })
-            .catch(() => {
-              alert("Registration failed. Please try again.");
-            });
-        } else {
-          alert(
-            "Registration failed. Please check your connection and try again."
-          );
-        }
+        const message = err.message || "Registration failed. Please try again.";
+        alert(message);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
   const handleLogin = (data) => {
+    setIsLoading(true);
     login(data)
       .then((res) => {
         if (res && res.token) {
-          localStorage.setItem("jwt", res.token);
-          setIsLoggedIn(true);
-          setLoginOpen(false);
+          return handleAuthLogin(res.token);
         } else {
-          alert("Login succeeded but token missing.");
+          throw new Error("Token missing");
         }
       })
       .catch((err) => {
         console.error("Login error:", err);
         alert("Login failed. Please try again.");
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
   const handleAuthLogin = (token) => {
+    localStorage.setItem("jwt", token);
     return api
       .getUserData(token)
       .then((userData) => {
@@ -252,7 +245,8 @@ function App() {
       })
       .catch((err) => {
         console.error("Error loading user data:", err);
-        alert("Failed to load user data. Please try again.");
+        localStorage.removeItem("jwt");
+        throw err;
       });
   };
 
@@ -284,7 +278,6 @@ function App() {
       })
       .catch((error) => {
         console.log("Error fetching items:", error);
-        setClothingItems(defaultClothingItems);
       })
       .finally(() => {
         setIsLoading(false);
@@ -316,7 +309,6 @@ function App() {
             <Header
               handleAddClick={handleAddClick}
               weatherData={weatherData}
-              currentUser={currentUser}
               isLoggedIn={isLoggedIn}
               handleSignIn={handleSignIn}
               handleSignUp={handleSignUp}
@@ -342,7 +334,6 @@ function App() {
                   <ProtectedRoute isLoggedIn={isLoggedIn}>
                     <Profile
                       clothingItems={clothingItems}
-                      currentUser={currentUser}
                       onCardClick={handleCardClick}
                       handleAddClick={handleAddClick}
                       onDeleteClick={handleDeleteClick}
@@ -389,21 +380,17 @@ function App() {
 
           <RegisterModal
             isOpen={activeModal === "signup"}
-            activeModal={activeModal}
             onClose={closeActiveModal}
-            setIsLoggedIn={setIsLoggedIn}
-            onAuthLogin={handleAuthLogin}
-            setActiveModal={setActiveModal}
             onRegisterModalSubmit={handleRegister}
             onLoginClick={handleSignIn}
+            isLoading={isLoading}
           />
           <LoginModal
             isOpen={activeModal === "signin"}
-            activeModal={activeModal}
             onClose={closeActiveModal}
-            onLogin={handleAuthLogin}
-            setActiveModal={setActiveModal}
+            onLogin={handleLogin}
             onSignupClick={handleSignUp}
+            isLoading={isLoading}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>

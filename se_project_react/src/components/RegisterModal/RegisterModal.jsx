@@ -1,131 +1,116 @@
 import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useForm } from "../../hooks/useForm";
+
+const defaultValues = {
+  email: "",
+  password: "",
+  name: "",
+  avatar: "",
+};
 
 export default function RegisterModal({
   title,
   onClose,
   isOpen,
   onRegisterModalSubmit,
-  activeModal,
   onLoginClick,
+  isLoading,
 }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const { values, handleChange, resetForm } = useForm(defaultValues);
 
   useEffect(() => {
-    if (isOpen) {
-      setEmail("");
-      setPassword("");
-      setName("");
-      setAvatar("");
+    if (!isOpen) {
+      resetForm();
     }
-  }, [isOpen]);
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleAvatarChange = (e) => {
-    setAvatar(e.target.value);
-  };
+  }, [isOpen, resetForm]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onRegisterModalSubmit({ email, password, name, avatar });
+    onRegisterModalSubmit({
+      email: values.email,
+      password: values.password,
+      name: values.name,
+      avatar: values.avatar,
+    });
   };
 
-  if (activeModal !== "signup") return null;
-
   return (
-    <ModalWithForm>
-      <div className={`modal ${isOpen ? "modal__opened" : ""}`}>
-        <div className="modal__content modal__content_type_registration">
-          <h2 className="modal__title">Sign Up</h2>
-
-          <button
-            onClick={onClose}
-            type="button"
-            className="modal__close-icon modal__close-icon_type_registration"
-          >
-            ✕
-          </button>
-          <form onSubmit={handleSubmit} className="modal__form">
-            <label htmlFor="register-email" className="modal__label">
-              Email*{" "}
-              <input
-                type="email"
-                className="modal__input"
-                id="register-email"
-                placeholder="Email"
-                required
-                onChange={handleEmailChange}
-                value={email}
-              />
-            </label>
-            <label htmlFor="register-password" className="modal__label">
-              Password*{" "}
-              <input
-                type="password"
-                className="modal__input"
-                id="register-password"
-                placeholder="Password"
-                required
-                onChange={handlePasswordChange}
-                value={password}
-              />
-            </label>
-            <label htmlFor="register-name" className="modal__label">
-              Name*{" "}
-              <input
-                type="text"
-                className="modal__input"
-                id="register-name"
-                placeholder="Name"
-                required
-                onChange={handleNameChange}
-                value={name}
-              />
-            </label>
-            <label htmlFor="register-avatar" className="modal__label">
-              Avatar URL{" "}
-              <input
-                type="url"
-                className="modal__input"
-                id="register-avatar"
-                placeholder="Avatar URL"
-                onChange={handleAvatarChange}
-                value={avatar}
-              />
-            </label>
-            <div className="register-modal__actions">
-              <button
-                type="submit"
-                className="register-modal__submit"
-                disabled={!email || !password || !name}
-              >
-                Sign Up
-              </button>
-              <button
-                type="button"
-                className="register-modal__switch"
-                onClick={onLoginClick}
-              >
-                or Log In
-              </button>
-            </div>
-          </form>
-        </div>
+    <ModalWithForm
+      title="Sign Up"
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+    >
+      <label htmlFor="register-email" className="modal__label">
+        Email*
+        <input
+          type="email"
+          className="modal__input"
+          id="register-email"
+          name="email"
+          placeholder="Email"
+          required
+          onChange={handleChange}
+          value={values.email}
+        />
+      </label>
+      <label htmlFor="register-password" className="modal__label">
+        Password*
+        <input
+          type="password"
+          className="modal__input"
+          id="register-password"
+          name="password"
+          placeholder="Password"
+          required
+          onChange={handleChange}
+          value={values.password}
+        />
+      </label>
+      <label htmlFor="register-name" className="modal__label">
+        Name*
+        <input
+          type="text"
+          className="modal__input"
+          id="register-name"
+          name="name"
+          placeholder="Name"
+          required
+          onChange={handleChange}
+          value={values.name}
+        />
+      </label>
+      <label htmlFor="register-avatar" className="modal__label">
+        Avatar URL
+        <input
+          type="url"
+          className="modal__input"
+          id="register-avatar"
+          name="avatar"
+          placeholder="Avatar URL"
+          onChange={handleChange}
+          value={values.avatar}
+        />
+      </label>
+      <div className="register-modal__actions">
+        <button
+          type="submit"
+          className="register-modal__submit"
+          disabled={
+            !values.email || !values.password || !values.name || isLoading
+          }
+        >
+          Sign Up
+        </button>
+        <button
+          type="button"
+          className="register-modal__switch"
+          onClick={onLoginClick}
+        >
+          or Log In
+        </button>
       </div>
     </ModalWithForm>
   );
