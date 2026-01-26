@@ -39,6 +39,7 @@ export default function RegisterModal({
   return (
     <ModalWithForm
       title="Sign Up"
+      buttonText="Sign Up"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -94,24 +95,13 @@ export default function RegisterModal({
           value={values.avatar}
         />
       </label>
-      <div className="register-modal__actions">
-        <button
-          type="submit"
-          className="register-modal__submit"
-          disabled={
-            !values.email || !values.password || !values.name || isLoading
-          }
-        >
-          Sign Up
-        </button>
-        <button
-          type="button"
-          className="register-modal__switch"
-          onClick={onLoginClick}
-        >
-          or Log In
-        </button>
-      </div>
+      <button
+        type="button"
+        className="register-modal__switch"
+        onClick={onLoginClick}
+      >
+        or Log In
+      </button>
     </ModalWithForm>
   );
 }

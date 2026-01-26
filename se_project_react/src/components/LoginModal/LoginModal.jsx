@@ -1,19 +1,23 @@
 import "./LoginModal.css";
 
-import { useState } from "react";
+import { useForm } from "../../hooks/useForm";
+import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function LoginModal({ isOpen, onClose, onLogin, onSignupClick, isLoading }) {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+const defaultValues = { email: "", password: "" };
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  }
+function LoginModal({ isOpen, onClose, onLogin, onSignupClick, isLoading }) {
+  const { values, handleChange, resetForm } = useForm(defaultValues);
+
+  useEffect(() => {
+    if (!isOpen) {
+      resetForm();
+    }
+  }, [isOpen, resetForm]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    const { email, password } = formData;
+    const { email, password } = values;
     if (!email.trim() || !password.trim()) {
       return;
     }
@@ -21,11 +25,12 @@ function LoginModal({ isOpen, onClose, onLogin, onSignupClick, isLoading }) {
   }
 
   const isSubmitDisabled =
-    !formData.email.trim() || !formData.password || isLoading;
+    !values.email.trim() || !values.password || isLoading;
 
   return (
     <ModalWithForm
       title="Log In"
+      buttonText="Log In"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -37,7 +42,7 @@ function LoginModal({ isOpen, onClose, onLogin, onSignupClick, isLoading }) {
           name="email"
           type="email"
           placeholder="Email"
-          value={formData.email}
+          value={values.email}
           onChange={handleChange}
           required
         />
@@ -49,27 +54,18 @@ function LoginModal({ isOpen, onClose, onLogin, onSignupClick, isLoading }) {
           name="password"
           type="password"
           placeholder="Password"
-          value={formData.password}
+          value={values.password}
           onChange={handleChange}
           required
         />
       </label>
-      <div className="login-modal__actions">
-        <button
-          type="submit"
-          className="login-modal__submit"
-          disabled={isSubmitDisabled}
-        >
-          Log In
-        </button>
-        <button
-          type="button"
-          className="login-modal__switch"
-          onClick={onSignupClick}
-        >
-          or Sign Up
-        </button>
-      </div>
+      <button
+        type="button"
+        className="login-modal__switch"
+        onClick={onSignupClick}
+      >
+        or Sign Up
+      </button>
     </ModalWithForm>
   );
 }
