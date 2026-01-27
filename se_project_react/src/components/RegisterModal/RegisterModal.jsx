@@ -39,7 +39,7 @@ export default function RegisterModal({
   return (
     <ModalWithForm
       title="Sign Up"
-      buttonText="Sign Up"
+     
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -95,13 +95,18 @@ export default function RegisterModal({
           value={values.avatar}
         />
       </label>
-      <button
-        type="button"
-        className="register-modal__switch"
-        onClick={onLoginClick}
-      >
-        or Log In
-      </button>
+      <div className="register-modal__buttons">
+        <button type="submit" className="modal__submit-btn">
+          Sign Up
+        </button>
+        <button
+          type="button"
+          className="register-modal__switch"
+          onClick={onLoginClick}
+        >
+          or Log In
+        </button>
+      </div>
     </ModalWithForm>
   );
 }

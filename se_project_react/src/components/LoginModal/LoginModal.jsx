@@ -30,7 +30,6 @@ function LoginModal({ isOpen, onClose, onLogin, onSignupClick, isLoading }) {
   return (
     <ModalWithForm
       title="Log In"
-      buttonText="Log In"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -59,13 +58,22 @@ function LoginModal({ isOpen, onClose, onLogin, onSignupClick, isLoading }) {
           required
         />
       </label>
-      <button
-        type="button"
-        className="login-modal__switch"
-        onClick={onSignupClick}
-      >
-        or Sign Up
-      </button>
+      <div className="login-modal__buttons">
+        <button
+          type="submit"
+          className="modal__submit-btn"
+          disabled={isSubmitDisabled}
+        >
+          Log In
+        </button>
+        <button
+          type="button"
+          className="login-modal__switch"
+          onClick={onSignupClick}
+        >
+          or Sign Up
+        </button>
+      </div>
     </ModalWithForm>
   );
 }

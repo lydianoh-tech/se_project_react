@@ -23,11 +23,13 @@ function ModalWithForm({
         ></button>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <div className="submit__btn-frame">
-            <button type="submit" className="modal__submit-btn">
-              {buttonText}
-            </button>
-          </div>
+          {buttonText && (
+            <div className="submit__btn-frame">
+              <button type="submit" className="modal__submit-btn">
+                {buttonText}
+              </button>
+            </div>
+          )}
         </form>
       </div>
     </div>

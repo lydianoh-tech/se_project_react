@@ -18,7 +18,6 @@
   opacity: 1;
 }
 .modal__label_account_info {
-  padding: 20px;
   border: none;
   border-bottom: 1px solid #cfcfcf;
   margin-top: 8px;
@@ -86,7 +85,18 @@
   opacity: 0.6;
   font-size: 14px;
   cursor: pointer;
-  text-decoration: underline;
+
+  top: 499px;
+  left: 585px;
+
+  opacity: 1;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+
+  line-height: 20px;
+  letter-spacing: 0%;
 }
 
 .login-modal__switch:hover {
