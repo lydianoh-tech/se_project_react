@@ -44,7 +44,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
 
-  // Toggle temperature unit
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
