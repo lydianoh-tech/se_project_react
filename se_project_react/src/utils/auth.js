@@ -1,6 +1,9 @@
 import { checkResponse } from "./api";
 
-const BASE_URL = "http://localhost:3001";
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwrtodayforyou.crabdance.com"
+    : "http://localhost:3001";
 
 export const register = ({ name, avatar, email, password }) =>
   fetch(`${BASE_URL}/signup`, {
