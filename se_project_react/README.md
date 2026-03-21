@@ -109,3 +109,6 @@ youtube link: https://youtu.be/yhwex8fRMw0
 Frontend: https://github.com/lydianoh-tech/se_project_react
 
 Backend: https://github.com/lydianoh-tech/se_project_express
+
+- **Deployed domain:** https://wtwrtodayforyou.crabdance.com
+- **Frontend GitHub repo:** https://github.com/lydianoh-tech/se_project_react/tree/main/se_project_react
