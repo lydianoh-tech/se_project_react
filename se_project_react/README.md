@@ -103,12 +103,6 @@ MIT
 
 ---
 
-**Live Demo:**  
-https://lydianoh-tech.github.io/se_project_react/
-youtube link: https://youtu.be/yhwex8fRMw0
-Frontend: https://github.com/lydianoh-tech/se_project_react
-
-Backend: https://github.com/lydianoh-tech/se_project_express
-
-- **Deployed domain:** https://wtwrtodayforyou.crabdance.com
-- **Frontend GitHub repo:** https://github.com/lydianoh-tech/se_project_react/tree/main/se_project_react
+https://wtwrtodayforyou.jumpingcrab.com
+https://www.wtwrtodayforyou.jumpingcrab.com
+https://api.wtwrtodayforyou.jumpingcrab.com

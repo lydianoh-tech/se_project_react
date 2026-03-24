@@ -8,8 +8,8 @@
     "preview": "vite preview",
     "server": "json-server --watch db.json --port 3001",
     "start": "concurrently \"npm run server\" \"npm run dev\"",
-    "homepage": "https://wtwrtodayforyou.crabdance.com",
-    "deploy": "npm run build && scp -r ./dist/* lydia28abeck@wtwrtodayforyou.crabdance.com:/home/lydia28abeck/frontend/"
+    "homepage": "https://wtwrtodayforyou.jumpingcrab.com",
+    "deploy": "npm run build && scp -r ./dist/* lydia28abeck@wtwrtodayforyou.jumpingcrab.com:/home/lydia28abeck/frontend/"
   },
   "dependencies": {
     "react": "^18.3.1",

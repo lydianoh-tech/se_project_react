@@ -263,7 +263,10 @@ npm run lint -- --fix
 
 ---
 
-🌍 Live Demo
+🌍 Project Links
+
+- Frontend (React) repository: https://github.com/lydianoh-tech/se_project_react
+- Deployed app (freeDNS): https://wtwrtodayforyou.crabdance.com
 
 ---
 
@@ -271,7 +274,3 @@ npm run lint -- --fix
 
 Created by Lydia Noh
 Inspired by the Around the U.S. project.
-
-https://github.com/lydianoh-tech/Full-stack-/tree/main/se_project_express
-
-https://github.com/lydianoh-tech/se_project_react/tree/main/se_project_react
